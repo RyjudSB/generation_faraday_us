@@ -1,0 +1,21 @@
+/* Article / content-page typography — layers on top of products.css */
+.article{max-width:860px;padding:18px clamp(20px,4vw,56px) 80px;font-size:1.02rem;color:var(--g700)}
+.article h2{font-size:1.7rem;font-weight:800;color:var(--ink);letter-spacing:-.01em;margin:1.8em 0 .5em;line-height:1.2}
+.article h3{font-size:1.28rem;font-weight:700;color:var(--ink);margin:1.4em 0 .4em}
+.article h4{font-size:1.05rem;font-weight:700;color:var(--ink);margin:1.2em 0 .3em}
+.article p{margin:0 0 1.1em}
+.article ul,.article ol{margin:0 0 1.2em 1.3em}
+.article li{margin:.4em 0}
+.article a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+.article a:hover{color:var(--accent-dark)}
+.article img{border-radius:14px;box-shadow:var(--shadow-md);margin:1.4em auto}
+.article figure{margin:1.6em 0}
+.article figcaption{font-size:.85rem;color:var(--g500);text-align:center;margin-top:.5em}
+.article blockquote{border-left:4px solid var(--accent);background:var(--white);padding:14px 20px;border-radius:0 10px 10px 0;margin:1.4em 0;color:var(--ink);font-style:italic}
+.article table{width:100%;border-collapse:collapse;margin:1.4em 0;font-size:.92rem;background:var(--white);border-radius:10px;overflow:hidden;box-shadow:var(--shadow-md)}
+.article th,.article td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--g200)}
+.article th{background:var(--ink);color:var(--white);font-weight:600}
+.article hr{border:none;border-top:1px solid var(--g200);margin:2em 0}
+.article strong{color:var(--ink)}
+.callout{background:var(--white);border:1px solid var(--g200);border-radius:14px;padding:26px 28px;box-shadow:var(--shadow-md);margin:1.4em 0}
+.callout .cta{margin-top:14px}
