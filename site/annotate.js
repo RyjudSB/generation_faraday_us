@@ -44,6 +44,7 @@
   .gfcard .num{display:inline-block;background:#E04A2C;color:#fff;width:20px;height:20px;border-radius:50%;text-align:center;line-height:20px;font-weight:700;font-size:11px;margin-right:6px}
   .gfcard.done .num{background:#3a9d4b}
   .gfcard .meta{color:#999;font-size:11px;margin:6px 0}
+  .gfcard .meta b{color:#E04A2C}
   .gfcard .row{display:flex;gap:8px;margin-top:6px}
   .gfcard .row button{font:600 11px "Poppins";border:0;border-radius:6px;padding:5px 9px;cursor:pointer;background:#f0f0f0;color:#333}
   .gfcard .row button.del{background:#fdecec;color:#c0392b}
@@ -51,6 +52,10 @@
   #gfpop{position:absolute;z-index:2147483600;width:260px;background:#fff;border-radius:12px;
     box-shadow:0 12px 40px rgba(0,0,0,.28);padding:14px;font-family:"Poppins",system-ui,sans-serif;display:none}
   #gfpop textarea{width:100%;height:74px;border:1px solid #ddd;border-radius:8px;padding:8px;font:13px "Poppins";resize:vertical;box-sizing:border-box}
+  #gfpop input{width:100%;border:1px solid #ddd;border-radius:8px;padding:8px;font:13px "Poppins";box-sizing:border-box;margin-bottom:2px}
+  #gfpop .gflab{display:block;font:700 10px "Poppins";text-transform:uppercase;letter-spacing:.06em;color:#999;margin:4px 0 4px}
+  #gfpop .gfwho-line{font:700 13px "Poppins";color:#E04A2C;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+  #gfpop .gfwho-line span{font:500 11px "Poppins";color:#999}
   #gfpop .pr{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
   #gfpop button{font:600 12px "Poppins";border:0;border-radius:7px;padding:8px 13px;cursor:pointer}
   #gfpop .save{background:#E04A2C;color:#fff}
@@ -95,6 +100,7 @@
       pin.style.left = (a.x * docW()) + 'px';
       pin.style.top = (a.y * docH()) + 'px';
       pin.innerHTML = '<span>' + (i + 1) + '</span>';
+      pin.title = (a.author ? a.author : 'Anonymous') + (a.note ? ': ' + a.note : '');
       pin.onclick = function (e) { e.stopPropagation(); openPop(pin.style.left, pin.style.top, a); };
       layer.appendChild(pin);
     });
@@ -109,7 +115,7 @@
     list.forEach(function (a, i) {
       var c = document.createElement('div'); c.className = 'gfcard' + (a.done ? ' done' : '');
       c.innerHTML = '<div><span class="num">' + (i + 1) + '</span>' + esc(a.note || '(no text)') + '</div>'
-        + '<div class="meta">' + (a.author ? esc(a.author) + ' · ' : '') + when(a.created) + '</div>'
+        + '<div class="meta">👤 <b>' + (a.author ? esc(a.author) : 'Anonymous') + '</b> · ' + when(a.created) + '</div>'
         + '<div class="row"><button data-a="done">' + (a.done ? 'Reopen' : 'Resolve') + '</button>'
         + '<button data-a="del" class="del">Delete</button></div>';
       c.querySelector('[data-a=done]').onclick = function () { toggle(a); };
@@ -130,18 +136,21 @@
     pop.style.left = Math.min(parseFloat(left) + 16, docW() - 280) + 'px';
     pop.style.top = (parseFloat(top) + 6) + 'px';
     if (existing) {
-      pop.innerHTML = '<div style="font-size:12px;color:#999;margin-bottom:6px">'
-        + (existing.author ? esc(existing.author) + ' · ' : '') + when(existing.created) + '</div>'
+      pop.innerHTML = '<div class="gfwho-line">' + (existing.author ? '👤 ' + esc(existing.author) : 'Anonymous')
+        + '<span>' + when(existing.created) + '</span></div>'
         + '<div style="font-size:14px;color:#222;white-space:pre-wrap">' + esc(existing.note || '(no text)') + '</div>'
         + '<div class="pr"><button class="cancel" id="gfx">Close</button>'
         + '<button class="save" id="gfres">' + (existing.done ? 'Reopen' : 'Resolve') + '</button></div>';
       $('gfx').onclick = hidePop; $('gfres').onclick = function () { toggle(existing); hidePop(); };
     } else {
-      pop.innerHTML = '<textarea id="gftext" placeholder="What needs to change here? e.g. swap this photo"></textarea>'
+      pop.innerHTML = '<label class="gflab">Your name</label>'
+        + '<input id="gfname" type="text" placeholder="Who are you?" value="' + esc(author) + '">'
+        + '<label class="gflab">Note</label>'
+        + '<textarea id="gftext" placeholder="What needs to change here? e.g. swap this photo"></textarea>'
         + '<div class="pr"><button class="cancel" id="gfx">Cancel</button><button class="save" id="gfsave">Save</button></div>';
       $('gfx').onclick = function () { hidePop(); cancelDraft(); };
       $('gfsave').onclick = saveDraft;
-      setTimeout(function () { $('gftext').focus(); }, 30);
+      setTimeout(function () { $(author ? 'gftext' : 'gfname').focus(); }, 30);
     }
     pop.style.display = 'block';
   }
@@ -155,6 +164,9 @@
   function cancelDraft() { draft = null; render(); }
   function saveDraft() {
     if (!draft) return;
+    var name = ($('gfname') && $('gfname').value || '').trim();
+    if (!name) { alert('Please enter your name so others know who left this note.'); if ($('gfname')) $('gfname').focus(); return; }
+    author = name; localStorage.setItem('gf_author', author); setWho();
     var note = ($('gftext') && $('gftext').value || '').trim();
     api('POST', { page: PAGE, x: draft.x, y: draft.y, note: note, author: author })
       .then(function (it) { if (it && it.id) items.push(it); draft = null; hidePop(); render(); });
@@ -178,7 +190,6 @@
   document.addEventListener('click', function (e) {
     if (!mode) return;
     if (e.target.closest('#gfbar,#gfpanel,#gfpop,.gfpin')) return;
-    if (!author) { var n = prompt('Your name (shown on notes):', ''); if (n) { author = n.trim(); localStorage.setItem('gf_author', author); setWho(); } }
     e.preventDefault();
     startDraft(e.pageX, e.pageY);
   }, true);
