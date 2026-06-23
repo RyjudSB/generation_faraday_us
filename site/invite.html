@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Accept invite · Generation Faraday</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}body{font-family:"Poppins",system-ui,sans-serif;background:#0E0E0E;color:#1A1A1A;
+min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.card{background:#fff;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.4);width:100%;max-width:380px;padding:34px 30px}
+.logo{display:block;height:34px;margin:0 auto 22px}
+h1{font-size:1.35rem;font-weight:800;text-align:center;margin-bottom:4px}
+.sub{text-align:center;color:#888;font-size:.9rem;margin-bottom:22px}
+label{display:block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#999;margin:14px 0 6px}
+input{width:100%;border:1px solid #ddd;border-radius:10px;padding:12px;font:15px "Poppins";outline:none}
+input:focus{border-color:#E04A2C}input:disabled{background:#f4f4f4;color:#888}
+button{width:100%;margin-top:22px;background:#E04A2C;color:#fff;border:0;border-radius:10px;padding:13px;font:700 15px "Poppins";cursor:pointer}
+button:hover{background:#B83A1F}button:disabled{opacity:.6}
+.err{background:#fdecec;color:#c0392b;font-size:.85rem;padding:10px 12px;border-radius:9px;margin-top:16px;display:none}
+.msg{text-align:center;color:#666;padding:20px 0}
+</style></head>
+<body>
+<form class="card" id="f" style="display:none">
+  <img class="logo" src="/genf-logo.png" alt="Generation Faraday">
+  <h1>Create your account</h1>
+  <div class="sub">You've been invited to the Generation Faraday review site</div>
+  <label>Email</label>
+  <input id="email" type="email" disabled>
+  <label>Your name</label>
+  <input id="name" type="text" placeholder="First Last" required autofocus>
+  <label>Choose a password</label>
+  <input id="password" type="password" autocomplete="new-password" placeholder="6+ characters" required>
+  <button id="btn" type="submit">Create account &amp; sign in</button>
+  <div class="err" id="err"></div>
+</form>
+<div class="card msg" id="bad" style="display:none">
+  <img class="logo" src="/genf-logo.png" alt="Generation Faraday">
+  <h1 style="margin-bottom:10px">Invite not valid</h1>
+  <p>This invite link is invalid or has already been used. Ask an admin for a new one.</p>
+</div>
+<script>
+var token=new URLSearchParams(location.search).get('token')||'';
+var f=document.getElementById('f'),bad=document.getElementById('bad'),err=document.getElementById('err'),btn=document.getElementById('btn');
+fetch('/api/app?action=invite-info&token='+encodeURIComponent(token)).then(function(r){return r.json()}).then(function(d){
+  if(d.valid){document.getElementById('email').value=d.email;f.style.display='block';}else{bad.style.display='block';}
+}).catch(function(){bad.style.display='block';});
+f.onsubmit=function(e){e.preventDefault();err.style.display='none';btn.disabled=true;btn.textContent='Creating…';
+  fetch('/api/app?action=accept-invite',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({token:token,name:document.getElementById('name').value.trim(),password:document.getElementById('password').value})})
+  .then(function(r){return r.json().then(function(d){return{ok:r.ok,d:d}})})
+  .then(function(x){if(x.ok){location.href='/';}else{throw new Error(x.d.error||'Could not create account')}})
+  .catch(function(e){err.textContent=e.message;err.style.display='block';btn.disabled=false;btn.textContent='Create account & sign in';});
+};
+</script>
+</body></html>

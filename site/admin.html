@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin · Generation Faraday</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/products/products.css"><link rel="stylesheet" href="/content.css"><link rel="stylesheet" href="/nav.css">
+<style>
+.adm{max-width:920px;margin:0 auto;padding:24px clamp(20px,4vw,56px) 90px}
+.panel{background:#fff;border:1px solid #E5E3DE;border-radius:14px;padding:22px;margin:18px 0;box-shadow:0 8px 24px rgba(14,14,14,.06)}
+.panel h2{font-size:1.15rem;font-weight:800;margin-bottom:14px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.row input,.row select{border:1px solid #ddd;border-radius:9px;padding:10px 12px;font:14px "Poppins"}
+.row input[type=email]{flex:1;min-width:200px}
+.btn{background:#E04A2C;color:#fff;border:0;border-radius:9px;padding:10px 16px;font:700 14px "Poppins";cursor:pointer}
+.btn:hover{background:#B83A1F}.btn.sm{padding:6px 11px;font-size:12px}.btn.gray{background:#eee;color:#333}.btn.del{background:#fdecec;color:#c0392b}
+table{width:100%;border-collapse:collapse;margin-top:6px;font-size:14px}
+th,td{text-align:left;padding:10px 8px;border-bottom:1px solid #eee}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#999}
+.tag{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:#eee;color:#555}
+.tag.admin{background:#E04A2C;color:#fff}
+.invite-link{background:#f6f6f4;border:1px dashed #ccc;border-radius:8px;padding:10px;font:12px monospace;word-break:break-all;margin-top:10px}
+.ok{color:#2e7d32;font-size:13px;margin-top:8px}
+.note{color:#888;font-size:13px;margin-top:6px}
+#gate{text-align:center;padding:80px 20px;color:#666}
+</style></head>
+<body>
+<div class="gfnav"><div class="gfnav-in">
+<a class="gfnav-brand" href="/"><img src="/genf-logo.png" alt="Generation Faraday"></a>
+<nav class="gfnav-links"><a href="/products/">Products</a><a href="/how-it-works.html">How It Works</a><a href="/schools.html">Schools</a><a href="/venues.html">Venues</a><a href="/about.html">About</a><a href="/faqs.html">FAQs</a></nav>
+<div class="gfnav-right"><a class="gfnav-phone" href="tel:+18057644346">+1 805 764 4346</a><a class="gfnav-cta" href="/get-in-touch.html">Contact</a></div>
+</div></div>
+
+<div id="gate" style="display:none">Checking access…</div>
+<div class="adm" id="app" style="display:none">
+  <header class="hero-head" style="padding:30px 0 6px"><div><div class="eyebrow" style="color:#E04A2C;font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.74rem">Admin</div>
+  <h1 style="font-size:2rem;font-weight:800">Team &amp; access</h1></div></header>
+
+  <div class="panel">
+    <h2>Invite someone</h2>
+    <form class="row" id="invf">
+      <input id="iemail" type="email" placeholder="name@company.com" required>
+      <select id="irole"><option value="member">Member</option><option value="admin">Admin</option></select>
+      <button class="btn" type="submit">Create invite link</button>
+    </form>
+    <div id="iout"></div>
+    <div class="note">Share the generated link with the person. It works once. (No email is sent automatically.)</div>
+  </div>
+
+  <div class="panel">
+    <h2>Pending invites</h2>
+    <table><thead><tr><th>Email</th><th>Role</th><th>Link</th><th></th></tr></thead><tbody id="invites"></tbody></table>
+    <div class="note" id="noinv" style="display:none">No pending invites.</div>
+  </div>
+
+  <div class="panel">
+    <h2>People</h2>
+    <table><thead><tr><th>Name</th><th>Email</th><th>Role</th><th></th></tr></thead><tbody id="users"></tbody></table>
+  </div>
+</div>
+
+<script>
+var me=null;
+function api(action,body){return fetch('/api/app?action='+action,{method:body?'POST':'GET',headers:body?{'Content-Type':'application/json'}:{},body:body?JSON.stringify(body):undefined}).then(function(r){return r.json().then(function(d){return{ok:r.ok,d:d}})});}
+function esc(s){return (s||'').replace(/[&<>"]/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]})}
+function link(t){return location.origin+'/invite.html?token='+t}
+
+api('bootstrap').then(function(x){
+  me=x.d.user;
+  if(!me){location.href='/login.html?next=/admin.html';return;}
+  if(me.role!=='admin'){document.getElementById('gate').style.display='block';document.getElementById('gate').innerHTML='<h2>Not authorized</h2><p>This page is for admins only.</p><p><a href="/">← Back to site</a></p>';return;}
+  document.getElementById('app').style.display='block';
+  render(x.d.users||[],x.d.invites||[]);
+});
+
+function render(users,invites){
+  var ut=document.getElementById('users');ut.innerHTML='';
+  users.forEach(function(u){
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td>'+esc(u.name)+'</td><td>'+esc(u.email)+'</td>'+
+      '<td><span class="tag '+(u.role==='admin'?'admin':'')+'">'+u.role+'</span></td><td style="text-align:right"></td>';
+    var cell=tr.lastChild;
+    if(u.email!=='ryan@mosequipment.com'){
+      var rb=document.createElement('button');rb.className='btn sm gray';rb.textContent=u.role==='admin'?'Make member':'Make admin';
+      rb.onclick=function(){api('set-role',{id:u.id,role:u.role==='admin'?'member':'admin'}).then(reload)};
+      var db=document.createElement('button');db.className='btn sm del';db.textContent='Remove';db.style.marginLeft='6px';
+      db.onclick=function(){if(confirm('Remove '+u.email+'?'))api('delete-user',{id:u.id}).then(reload)};
+      cell.appendChild(rb);cell.appendChild(db);
+    }else{cell.innerHTML='<span class="note">main admin</span>'}
+    ut.appendChild(tr);
+  });
+  var it=document.getElementById('invites');it.innerHTML='';
+  var pending=invites.filter(function(i){return !i.used});
+  document.getElementById('noinv').style.display=pending.length?'none':'block';
+  pending.forEach(function(i){
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td>'+esc(i.email)+'</td><td><span class="tag '+(i.role==='admin'?'admin':'')+'">'+i.role+'</span></td>'+
+      '<td><button class="btn sm gray copy">Copy link</button></td>'+
+      '<td style="text-align:right"><button class="btn sm del rev">Revoke</button></td>';
+    tr.querySelector('.copy').onclick=function(){navigator.clipboard.writeText(link(i.token));this.textContent='Copied!';};
+    tr.querySelector('.rev').onclick=function(){api('revoke-invite',{token:i.token}).then(reload)};
+    it.appendChild(tr);
+  });
+}
+function reload(){api('list').then(function(x){render(x.d.users||[],x.d.invites||[])})}
+
+document.getElementById('invf').onsubmit=function(e){e.preventDefault();
+  var email=document.getElementById('iemail').value.trim(),role=document.getElementById('irole').value;
+  api('create-invite',{email:email,role:role}).then(function(x){
+    var out=document.getElementById('iout');
+    if(!x.ok){out.innerHTML='<div class="err" style="display:block;background:#fdecec;color:#c0392b;padding:10px;border-radius:8px;margin-top:10px">'+esc(x.d.error)+'</div>';return;}
+    out.innerHTML='<div class="ok">Invite created for '+esc(email)+'. Share this link:</div><div class="invite-link">'+esc(link(x.d.invite.token))+'</div>';
+    document.getElementById('iemail').value='';reload();
+  });
+};
+</script>
+</body></html>
