@@ -25,7 +25,13 @@ async function save(d) {
 async function load() {
   let d = null;
   const url = await blobUrl();
-  if (url) { const r = await fetch(url, { cache: 'no-store' }); if (r.ok) { try { d = await r.json(); } catch {} } }
+  if (url) {
+    // Cache-bust: the public Blob URL is CDN-cached, so a plain fetch can return
+    // a stale copy right after a write (lost updates). A unique query key forces origin.
+    const bust = url + (url.includes('?') ? '&' : '?') + '_=' + Date.now() + Math.random().toString(36).slice(2);
+    const r = await fetch(bust, { cache: 'no-store' });
+    if (r.ok) { try { d = await r.json(); } catch {} }
+  }
   if (!d || typeof d !== 'object') d = {};
   d.users = d.users || []; d.invites = d.invites || []; d.notes = d.notes || []; d.comments = d.comments || [];
   if (!d.users.length) {
