@@ -1,0 +1,15 @@
+/* Canonical site nav — identical on every page. Sits just below the review bar. */
+.gfnav{position:sticky;top:46px;z-index:1000;background:#fff;border-bottom:1px solid #E5E3DE}
+.gfnav-in{max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,56px);height:64px;display:flex;align-items:center;gap:26px}
+.gfnav-brand{display:flex;align-items:center}
+.gfnav-brand img{height:32px;width:auto;display:block}
+.gfnav-links{display:flex;gap:22px;margin-left:6px}
+.gfnav-links a{color:#1A1A1A;font:600 14px/1 "Poppins",system-ui,sans-serif;text-decoration:none;white-space:nowrap}
+.gfnav-links a:hover{color:#E04A2C}
+.gfnav-right{margin-left:auto;display:flex;align-items:center;gap:16px}
+.gfnav-phone{color:#6B6B6B;font:600 14px "Poppins",system-ui,sans-serif;text-decoration:none;white-space:nowrap}
+.gfnav-phone:hover{color:#1A1A1A}
+.gfnav-cta{background:#E04A2C;color:#fff;font:700 14px "Poppins",system-ui,sans-serif;padding:10px 18px;border-radius:9px;text-decoration:none;white-space:nowrap}
+.gfnav-cta:hover{background:#B83A1F}
+@media(max-width:900px){.gfnav-links{gap:14px}.gfnav-phone{display:none}}
+@media(max-width:680px){.gfnav-links{display:none}}
