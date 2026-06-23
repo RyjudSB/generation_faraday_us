@@ -1,0 +1,221 @@
+/* =============================================================
+   Generation Faraday UK - Official Brand Design System
+   Per Brand Guidelines 2025
+   
+   Primary Colours:
+     #1d1d1d  - Near-black (text, dark backgrounds)
+     #f95555  - Brand Red (CTAs, accents, highlights)
+     #f6f8f9  - Off-white (light section backgrounds)
+   
+   Secondary Colours:
+     #efd999  - Yellow/Gold
+     #e7615b  - Coral Red
+     #d4c0e8  - Lavender
+     #99afce  - Steel Blue
+   
+   Typography:
+     Headings:  Cabin Bold/SemiBold
+     Body/UI:   Manrope Regular/Light/Bold
+     Logo only: Orbitron (never used in UI)
+   ============================================================= */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+html, body {
+  overscroll-behavior-y: none;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* Backgrounds */
+  --background: oklch(1 0 0);                    /* #ffffff */
+  --foreground: oklch(0.13 0 0);                 /* #1d1d1d near-black */
+
+  /* Cards */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.13 0 0);
+
+  /* Popovers */
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.13 0 0);
+
+  /* Primary = Brand Red #f95555 */
+  --primary: oklch(0.65 0.2 22);                 /* #f95555 */
+  --primary-foreground: oklch(1 0 0);            /* white */
+
+  /* Secondary = light off-white tint */
+  --secondary: oklch(0.97 0.002 22);
+  --secondary-foreground: oklch(0.13 0 0);
+
+  /* Muted */
+  --muted: oklch(0.96 0.003 22);
+  --muted-foreground: oklch(0.52 0.01 22);
+
+  /* Accent = light red tint */
+  --accent: oklch(0.96 0.015 22);
+  --accent-foreground: oklch(0.13 0 0);
+
+  /* Destructive */
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+
+  /* Borders & inputs */
+  --border: oklch(0.91 0.003 22);
+  --input: oklch(0.91 0.003 22);
+  --ring: oklch(0.65 0.2 22);
+
+  /* Charts - brand palette */
+  --chart-1: oklch(0.65 0.2 22);    /* brand red */
+  --chart-2: oklch(0.82 0.13 85);   /* yellow/gold */
+  --chart-3: oklch(0.72 0.1 310);   /* lavender */
+  --chart-4: oklch(0.68 0.08 240);  /* steel blue */
+  --chart-5: oklch(0.62 0.18 22);   /* coral */
+
+  /* Sidebar */
+  --sidebar: oklch(0.98 0 0);
+  --sidebar-foreground: oklch(0.13 0 0);
+  --sidebar-primary: oklch(0.65 0.2 22);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.96 0.015 22);
+  --sidebar-accent-foreground: oklch(0.13 0 0);
+  --sidebar-border: oklch(0.91 0.003 22);
+  --sidebar-ring: oklch(0.65 0.2 22);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cabin', system-ui, sans-serif;
+    font-weight: 700;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  a[href],
+  select:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 3rem;
+      padding-right: 3rem;
+      max-width: 1320px;
+    }
+  }
+
+  /* Section label - Cabin all-caps tracking */
+  .section-label {
+    font-family: 'Cabin', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: oklch(0.65 0.2 22); /* brand red */
+  }
+
+  /* Red underline accent on headline words */
+  .accent-underline {
+    position: relative;
+    display: inline-block;
+  }
+  .accent-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 4px;
+    background: oklch(0.65 0.2 22); /* brand red */
+    border-radius: 2px;
+  }
+
+  /* Fade-up animation for sections */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-up {
+    animation: fadeUp 0.5s ease-out both;
+  }
+
+  /* Stat number style */
+  .stat-number {
+    font-family: 'Cabin', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(3rem, 6vw, 5rem);
+    line-height: 1;
+    color: oklch(0.65 0.2 22); /* brand red */
+  }
+}
