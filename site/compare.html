@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Compare · Generation Faraday</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}html,body{height:100%}
+body{font-family:"Poppins",system-ui,sans-serif;display:flex;flex-direction:column;background:#0E0E0E}
+#bar{height:50px;flex:0 0 50px;display:flex;align-items:center;gap:12px;padding:0 14px;color:#fff;font-size:13px}
+#bar .exit{background:#2a2a2a;color:#fff;border:0;border-radius:8px;padding:8px 13px;font:600 13px Poppins;cursor:pointer}
+#bar .exit:hover{background:#E04A2C}
+#bar .tag{font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border-radius:5px}
+#bar .tag.new{background:#E04A2C;color:#fff}#bar .tag.old{background:#555;color:#fff}
+#bar .u{color:#bbb;font-weight:600;max-width:22vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#bar .vs{color:#777}
+#bar .hint{margin-left:auto;color:#888;font-weight:600}
+#panes{flex:1;display:flex;min-height:0}
+#panes .col{flex:1;display:flex;flex-direction:column;min-width:0;border-left:2px solid #0E0E0E}
+#panes .lbl{height:26px;flex:0 0 26px;display:flex;align-items:center;justify-content:center;font:700 11px Poppins;text-transform:uppercase;letter-spacing:.08em;color:#fff}
+#panes .lbl.new{background:#E04A2C}#panes .lbl.old{background:#444}
+#panes iframe{flex:1;width:100%;border:0;background:#fff}
+@media(max-width:700px){#panes{flex-direction:column}#bar .hint{display:none}}
+</style></head>
+<body>
+<div id="bar">
+  <button class="exit" id="exit">&larr; Exit compare</button>
+  <span class="tag new">New</span><span class="u" id="nu"></span>
+  <span class="vs">vs</span>
+  <span class="tag old">Old</span><span class="u" id="ou"></span>
+  <span class="hint">Navigate the left (new) site — the right (old) site follows automatically.</span>
+</div>
+<div id="panes">
+  <div class="col"><div class="lbl new">New — classroomfaradaybags.com</div><iframe id="lf"></iframe></div>
+  <div class="col"><div class="lbl old">Old — generationfaraday.com</div><iframe id="rf"></iframe></div>
+</div>
+<script>
+var BASE='https://generationfaraday.com';
+var start=new URLSearchParams(location.search).get('p')||'/';
+var lf=document.getElementById('lf'), rf=document.getElementById('rf');
+function mapOld(path){
+  path=(path||'/').split('#')[0].split('?')[0];
+  if(path==='/'||path==='') return BASE+'/';
+  var m=path.match(/^\/products\/([^/]+)\.html$/); if(m) return BASE+'/product/'+m[1]+'/';
+  if(path==='/products'||path==='/products/') return BASE+'/products/';
+  var special={'/request-a-quote.html':'/request-quote/','/get-in-touch.html':'/get-in-touch/'};
+  if(special[path]) return BASE+special[path];
+  m=path.match(/^\/([a-z0-9-]+)\.html$/); if(m) return BASE+'/'+m[1]+'/';
+  return BASE+path;
+}
+var last='';
+function sync(){
+  try{
+    var loc=lf.contentWindow.location;
+    var p=loc.pathname;
+    if(p!==last){ last=p; var old=mapOld(p); rf.src=old;
+      document.getElementById('nu').textContent=p;
+      document.getElementById('ou').textContent=old.replace(BASE,'')||'/'; }
+  }catch(e){ /* left navigated off-origin (e.g. external link) — leave right as-is */ }
+}
+lf.addEventListener('load', sync);
+lf.src=start;
+document.getElementById('exit').onclick=function(){
+  var go=start; try{ go=lf.contentWindow.location.pathname; }catch(e){}
+  location.href=go;
+};
+</script>
+</body></html>
