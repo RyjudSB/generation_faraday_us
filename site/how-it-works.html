@@ -1,4 +1,1241 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>How It Works · Generation Faraday</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/home.css"><link rel="stylesheet" href="/nav.css"><link rel="stylesheet" href="/content.css"></head><body><div class="gfnav"><div class="gfnav-in"><a class="gfnav-brand" href="/"><img src="/genf-logo.png" alt="Generation Faraday"></a><nav class="gfnav-links"><a href="/products/">Products</a><a href="/how-it-works.html">How It Works</a><a href="/schools.html">Schools</a><a href="/venues.html">Venues</a><a href="/about.html">About</a><a href="/faqs.html">FAQs</a></nav><div class="gfnav-right"><a class="gfnav-phone" href="tel:+18057644346">+1 805 764 4346</a><a class="gfnav-cta" href="/get-in-touch.html">Contact</a></div></div></div><header class="page-head"><div class="wrap"><h1>How It Works</h1><p class="lead">The science of blocking the signal — and what a focused, phone-free day actually looks like.</p></div></header><section class="signals section-pad" id="signals">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How It Works · Generation Faraday</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   GLOBAL · base · nav · page-head · signals · stat/cta bands · footer
+   (Standalone replacement for /home.css, /nav.css, /content.css)
+   ============================================================ */
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Poppins', sans-serif;
+    color: #0E0E0E;
+    background: #FFFFFF;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- NAV ---------- */
+  .gfnav {
+    background: #FFFFFF;
+    border-bottom: 1px solid #E7E4DC;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .gfnav-in {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .gfnav-brand img { height: 32px; width: auto; display: block; }
+  .gfnav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex: 1;
+  }
+  .gfnav-links a {
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #0E0E0E;
+    letter-spacing: -0.005em;
+    transition: color .2s ease;
+  }
+  .gfnav-links a:hover { color: #E04A2C; }
+  .gfnav-right { display: flex; align-items: center; gap: 18px; margin-left: auto; }
+  .gfnav-phone {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0E0E0E;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+  .gfnav-phone:hover { color: #E04A2C; }
+  .gfnav-cta {
+    background: #0E0E0E;
+    color: #FFFFFF;
+    padding: 10px 18px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    transition: background .2s ease;
+  }
+  .gfnav-cta:hover { background: #E04A2C; }
+  @media (max-width: 880px) {
+    .gfnav-links { display: none; }
+    .gfnav-in { gap: 16px; }
+  }
+
+  /* ---------- PAGE HEAD ---------- */
+  .page-head {
+    background: #F7F2E8;
+    padding: clamp(72px, 10vw, 120px) 0;
+    border-bottom: 1px solid #E7E4DC;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-head::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(224,74,44,0.06), transparent 60%);
+    pointer-events: none;
+  }
+  .page-head h1 {
+    position: relative;
+    font-size: clamp(44px, 7vw, 88px);
+    font-weight: 900;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    color: #0E0E0E;
+    margin: 0 0 22px;
+    max-width: 14ch;
+  }
+  .page-head .lead {
+    position: relative;
+    font-size: clamp(16px, 1.6vw, 19px);
+    line-height: 1.55;
+    color: #4A4A4A;
+    margin: 0;
+    max-width: 60ch;
+    font-weight: 500;
+  }
+
+  /* ---------- SIGNALS · WHAT GETS BLOCKED ---------- */
+  .signals {
+    background: #0E0E0E;
+    color: #FFFFFF;
+    position: relative;
+    overflow: hidden;
+  }
+  .signals::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 20% 20%, rgba(224,74,44,0.08), transparent 50%);
+    pointer-events: none;
+  }
+  .signals .wrap { position: relative; }
+  .section-pad { padding: clamp(64px, 8vw, 110px) 0; }
+
+  .signals-head { max-width: 760px; margin: 0 auto 56px; text-align: center; }
+  .signals-head .eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #E04A2C;
+    margin-bottom: 16px;
+  }
+  .signals-head h2 {
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    color: #FFFFFF;
+    margin: 0 0 20px;
+  }
+  .signals-head h2 .accent { color: #E04A2C; }
+  .signals-head p {
+    font-size: 16px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.72);
+    margin: 0;
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .signals-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 48px;
+  }
+  @media (min-width: 560px) { .signals-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 900px) { .signals-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1180px) { .signals-grid { grid-template-columns: repeat(6, 1fr); } }
+
+  .signal-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 22px 18px 20px;
+    text-align: center;
+    position: relative;
+    transition: border-color .2s ease, transform .2s ease;
+  }
+  .signal-card:hover {
+    border-color: rgba(224,74,44,0.5);
+    transform: translateY(-3px);
+  }
+  .signal-card .badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    color: #E04A2C;
+    background: rgba(224,74,44,0.14);
+    padding: 3px 7px;
+    border-radius: 2px;
+  }
+  .signal-card .icon-wrap {
+    width: 48px;
+    height: 48px;
+    margin: 8px auto 14px;
+    color: #FFFFFF;
+    display: grid;
+    place-items: center;
+  }
+  .signal-card .icon-wrap svg { width: 100%; height: 100%; }
+  .signal-card .name {
+    font-size: 14px;
+    font-weight: 800;
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .signal-card .desc {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.4;
+  }
+
+  .signals-foot {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  @media (min-width: 800px) { .signals-foot { grid-template-columns: 1fr 1fr; } }
+  .foot-cell {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 8px;
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .foot-cell .foot-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #E04A2C;
+  }
+  .foot-cell .foot-value {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.78);
+  }
+  .foot-cell .foot-value strong { color: #FFFFFF; font-weight: 700; }
+
+  /* ---------- STAT BAND ---------- */
+  .statband {
+    background: #F7F5F0;
+    padding: clamp(48px, 6vw, 72px) 0;
+    border-bottom: 1px solid #E7E4DC;
+  }
+  .band-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .statband .band-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 28px 56px;
+  }
+  .statband .eyebrow {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #E04A2C;
+    flex-basis: 100%;
+    margin-bottom: 4px;
+  }
+  .statband .stat { display: flex; flex-direction: column; gap: 6px; min-width: 180px; }
+  .statband .stat .n {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    color: #0E0E0E;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .statband .stat .n .accent { color: #E04A2C; }
+  .statband .stat .l {
+    font-size: 12.5px;
+    color: #6B6B6B;
+    line-height: 1.4;
+    font-weight: 500;
+    max-width: 30ch;
+  }
+
+  /* ---------- CHART SECTION ---------- */
+  .chart-sec {
+    background: #FFFFFF;
+    padding: clamp(48px, 6vw, 72px) 0;
+    border-bottom: 1px solid #E7E4DC;
+  }
+  .chartcard {
+    max-width: 760px;
+    margin: 0 auto;
+    background: #F7F5F0;
+    border: 1px solid #E7E4DC;
+    border-radius: 8px;
+    padding: 32px 32px 24px;
+  }
+  .chartcard .ct {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #E04A2C;
+    margin-bottom: 8px;
+  }
+  .chartcard .ch {
+    font-size: 22px;
+    font-weight: 800;
+    color: #0E0E0E;
+    letter-spacing: -0.015em;
+    margin-bottom: 22px;
+  }
+  .chartcard svg { display: block; }
+  .chartcard .src {
+    font-size: 11px;
+    color: #6B6B6B;
+    margin-top: 14px;
+    font-weight: 500;
+  }
+
+  /* ---------- CTA BAND ---------- */
+  .ctaband {
+    background: #0E0E0E;
+    color: #FFFFFF;
+    padding: clamp(64px, 8vw, 96px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .ctaband::before {
+    content: '';
+    position: absolute;
+    top: -150px; right: -150px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(224,74,44,0.15), transparent 60%);
+    pointer-events: none;
+  }
+  .ctaband .band-inner { position: relative; text-align: center; max-width: 760px; }
+  .ctaband .eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #E04A2C;
+    margin-bottom: 16px;
+  }
+  .ctaband h2 {
+    font-size: clamp(30px, 4.5vw, 48px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin: 0 0 18px;
+  }
+  .ctaband p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.72);
+    margin: 0 0 32px;
+    max-width: 55ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .ctaband .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 24px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: background .2s ease, transform .2s ease, border-color .2s ease;
+  }
+  .btn-primary { background: #E04A2C; color: #FFFFFF; }
+  .btn-primary:hover { background: #C13E22; transform: translateY(-1px); }
+  .btn-ghost { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #FFFFFF; }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: #FFFFFF; }
+
+  /* ---------- FOOTER ---------- */
+  footer.site {
+    background: #0E0E0E;
+    color: rgba(255,255,255,0.72);
+    padding: 64px 0 40px;
+  }
+  footer.site .foot-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  @media (min-width: 700px) { footer.site .foot-grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; } }
+  footer.site .brand img { height: 36px; width: auto; filter: brightness(1.2); }
+  footer.site .foot-tag {
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.55);
+    max-width: 36ch;
+  }
+  footer.site h4 {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin: 0 0 18px;
+  }
+  footer.site ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  footer.site ul a {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.72);
+    text-decoration: none;
+    transition: color .2s ease;
+  }
+  footer.site ul a:hover { color: #E04A2C; }
+
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   HOW IT WORKS · Inline page styles (GF design system)
+   ============================================================ */
+  :root {
+    --ink: #0E0E0E;
+    --white: #FFFFFF;
+    --off: #F7F5F0;
+    --cream: #F7F2E8;
+    --accent: #E04A2C;
+    --accent-soft: #FCEEE9;
+    --gray-200: #E7E4DC;
+    --gray-500: #8B8579;
+    --gray-600: #6B6B6B;
+    --gray-700: #4A4A4A;
+  }
+  .hiw { font-family: 'Poppins', sans-serif; color: var(--ink); }
+  .hiw .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  .hiw .section-pad { padding: clamp(64px, 8vw, 110px) 0; }
+  .hiw .eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .hiw .accent { color: var(--accent); }
+  .hiw .hl { color: var(--accent); font-weight: 700; }
+
+  /* ---------- 2,000 CYCLES BREAKTHROUGH ---------- */
+  .cycles-hero {
+    background: var(--ink);
+    color: var(--white);
+    padding: clamp(56px, 8vw, 96px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .cycles-hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(224,74,44,0.18), transparent 60%);
+    pointer-events: none;
+  }
+  .cycles-wrap {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  @media (min-width: 1000px) {
+    .cycles-wrap { grid-template-columns: 1.15fr 1fr; gap: 64px; }
+  }
+  .cycles-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 14px;
+    background: rgba(224,74,44,0.14);
+    border: 1px solid rgba(224,74,44,0.35);
+    color: var(--accent);
+    border-radius: 999px;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .cycles-tag .dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: gfpulse 2s ease-in-out infinite;
+  }
+  @keyframes gfpulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+  .cycles-h {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0 0 24px;
+    line-height: 0.95;
+  }
+  .cycles-num {
+    font-size: clamp(80px, 12vw, 160px);
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    color: var(--accent);
+    line-height: 0.85;
+  }
+  .cycles-num-label {
+    font-size: clamp(18px, 2.2vw, 26px);
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+  }
+  .cycles-sub {
+    font-size: 17px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.86);
+    margin: 0 0 28px;
+    max-width: 56ch;
+  }
+  .cycles-sub .hl { color: var(--accent); font-weight: 700; }
+  .cycles-strike {
+    text-decoration: line-through;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    color: rgba(255,255,255,0.65);
+  }
+  .cycles-story {
+    border-left: 2px solid var(--accent);
+    padding: 4px 22px;
+    margin-bottom: 28px;
+    max-width: 58ch;
+  }
+  .cycles-story p {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.72);
+    margin: 0 0 14px;
+  }
+  .cycles-story p:last-child { margin-bottom: 0; }
+  .cycles-story .hl { color: var(--accent); font-weight: 700; }
+  .cycles-proof-line {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed rgba(255,255,255,0.15);
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.55;
+  }
+  .cycles-proof-line strong { color: var(--white); font-weight: 700; }
+  .cycles-proof-tag {
+    display: inline-block;
+    padding: 3px 8px;
+    margin-right: 8px;
+    background: var(--accent);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    vertical-align: 1px;
+  }
+  .gf-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .gf-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 22px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: transform .2s ease, background .2s ease, border-color .2s ease;
+  }
+  .gf-btn-primary {
+    background: var(--accent);
+    color: var(--white);
+  }
+  .gf-btn-primary:hover { background: #C13E22; transform: translateY(-1px); }
+  .gf-btn-ghost {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: var(--white);
+  }
+  .gf-btn-ghost:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: var(--white);
+  }
+  .gf-btn-ghost-dark {
+    background: transparent;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+  }
+  .gf-btn-ghost-dark:hover { background: var(--ink); color: var(--white); }
+
+  /* Counter visual */
+  .cycles-counter {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 8px;
+    padding: 32px;
+  }
+  .cycles-counter-num { text-align: center; margin-bottom: 4px; }
+  .cn-current {
+    font-size: clamp(64px, 9vw, 112px);
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+  }
+  .cycles-counter-label {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .cycles-counter-bar {
+    height: 6px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+  .cycles-counter-fill {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to right, var(--accent), #ff7a52);
+    animation: cyclesFill 3s ease-out forwards;
+  }
+  @keyframes cyclesFill { from { width: 0; } to { width: 100%; } }
+  .cycles-counter-key { display: flex; flex-direction: column; gap: 14px; }
+  .cck-row {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 60px;
+    align-items: center;
+    gap: 14px;
+  }
+  .cck-name {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.82);
+  }
+  .cck-row:first-child .cck-name { color: var(--white); font-weight: 800; }
+  .cck-bar { height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; }
+  .cck-bar-fill { height: 100%; border-radius: 4px; }
+  .cck-bar-fill-us {
+    width: 100%;
+    background: var(--accent);
+    box-shadow: 0 0 12px rgba(224,74,44,0.4);
+  }
+  .cck-bar-fill-them { background: rgba(255,255,255,0.25); }
+  .cck-val {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--white);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  .cck-row:first-child .cck-val { color: var(--accent); }
+  .cycles-counter-foot {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+  }
+  .cycles-counter-foot strong { color: rgba(255,255,255,0.85); font-weight: 700; }
+
+  /* ---------- SCIENCE / FOUR-STEP PROGRESSION ---------- */
+  .science { background: var(--off); }
+  .science-head { max-width: 760px; margin: 0 auto 56px; text-align: center; }
+  .science-head h2 {
+    font-size: clamp(32px, 4.2vw, 48px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin: 0 0 18px;
+  }
+  .science-head p {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--gray-700);
+    margin: 0;
+  }
+  .science-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  @media (min-width: 700px) { .science-grid { grid-template-columns: repeat(2, 1fr); } }
+  .science-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .science-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 36px rgba(14,14,14,0.08);
+  }
+  .science-card-img {
+    aspect-ratio: 16/9;
+    background: var(--cream);
+    overflow: hidden;
+    position: relative;
+  }
+  .science-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .science-card-body { padding: 28px 28px 32px; flex: 1; display: flex; flex-direction: column; }
+  .science-card-num {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .science-card-h {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+    margin: 0 0 12px;
+    color: var(--ink);
+  }
+  .science-card-p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--gray-700);
+    margin: 0;
+  }
+
+  /* ---------- PEDIGREE STRIP ---------- */
+  .pedigree {
+    background: var(--ink);
+    color: var(--white);
+    padding: 56px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .pedigree::before {
+    content: '';
+    position: absolute;
+    top: -20%; right: -10%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(224,74,44,0.12), transparent 60%);
+    pointer-events: none;
+  }
+  .pedigree-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: center;
+  }
+  @media (min-width: 860px) {
+    .pedigree-grid { grid-template-columns: 0.9fr 1.1fr; gap: 48px; }
+  }
+  .pedigree-lineage {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .pedigree-lineage .md-label {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.01em;
+  }
+  .pedigree-lineage .sub {
+    color: rgba(255,255,255,0.55);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    padding-left: 14px;
+    border-left: 1px solid rgba(255,255,255,0.15);
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+  .pedigree-text {
+    font-size: clamp(15px, 1.4vw, 17px);
+    line-height: 1.55;
+    color: var(--white);
+    max-width: 56ch;
+    font-weight: 600;
+    margin: 0;
+  }
+  .pedigree-text .mute { color: rgba(255,255,255,0.62); font-weight: 500; }
+  .pedigree-text .mute strong { color: var(--white); font-weight: 700; }
+  .pedigree-foot {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.14);
+  }
+  .pedigree-foot .years {
+    font-size: clamp(28px, 2.8vw, 36px);
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -0.035em;
+    line-height: 1;
+  }
+  .pedigree-foot .years-label {
+    font-size: 9.5px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.3;
+  }
+  .pedigree-photo {
+    position: relative;
+    min-height: 220px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0E0E0E 100%);
+  }
+  .pedigree-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+  }
+
+  /* ---------- IMPLEMENTATION PHASES ---------- */
+  .phases { background: var(--white); }
+  .phases-head {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-items: end;
+    margin-bottom: 56px;
+  }
+  @media (min-width: 900px) { .phases-head { grid-template-columns: 1.2fr 0.8fr; gap: 48px; } }
+  .phases-head h2 {
+    font-size: clamp(32px, 4vw, 46px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin: 0;
+  }
+  .phases-head p {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--gray-700);
+    margin: 0;
+  }
+  .phases-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 700px) { .phases-list { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1080px) { .phases-list { grid-template-columns: repeat(5, 1fr); gap: 14px; } }
+  .phase-card {
+    background: var(--off);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 24px 22px 26px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform .2s ease, border-color .2s ease;
+  }
+  .phase-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+  }
+  .phase-num {
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--accent);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 16px;
+  }
+  .phase-h {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin: 0 0 10px;
+  }
+  .phase-p {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--gray-700);
+    margin: 0;
+  }
+
+  /* ---------- POLICY SHAPES ---------- */
+  .policies { background: var(--cream); }
+  .policies-head { max-width: 760px; margin: 0 auto 56px; text-align: center; }
+  .policies-head h2 {
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin: 0 0 18px;
+  }
+  .policies-head p {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--gray-700);
+    margin: 0;
+  }
+  .policies-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 800px) { .policies-grid { grid-template-columns: repeat(3, 1fr); } }
+  .policy-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .policy-card.recommended { border-color: var(--accent); border-width: 2px; }
+  .policy-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(14,14,14,0.08); }
+  .policy-tag {
+    position: absolute;
+    top: -1px;
+    right: 16px;
+    background: var(--accent);
+    color: var(--white);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 0 0 3px 3px;
+  }
+  .policy-eyebrow {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-bottom: 8px;
+  }
+  .policy-h {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+    margin: 0 0 14px;
+  }
+  .policy-p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--gray-700);
+    margin: 0 0 20px;
+    flex: 1;
+  }
+  .policy-meta {
+    padding-top: 16px;
+    border-top: 1px solid var(--gray-200);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .policy-meta-row { display: flex; justify-content: space-between; gap: 14px; }
+  .policy-meta-k {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+  }
+  .policy-meta-v {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--ink);
+    text-align: right;
+  }
+
+  /* ---------- MATH PANEL ---------- */
+  .math { background: var(--white); }
+  .math-head {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+    align-items: end;
+  }
+  @media (min-width: 900px) { .math-head { grid-template-columns: 1.1fr 0.9fr; gap: 48px; } }
+  .math-head h2 {
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin: 0;
+  }
+  .math-head p {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--gray-700);
+    margin: 0;
+  }
+  .math-stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  @media (min-width: 760px) { .math-stats { grid-template-columns: repeat(3, 1fr); } }
+  .math-stat {
+    padding: 36px 32px;
+    background: var(--off);
+    border-bottom: 1px solid var(--gray-200);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  @media (min-width: 760px) {
+    .math-stat { border-bottom: none; border-right: 1px solid var(--gray-200); }
+    .math-stat:last-child { border-right: none; }
+  }
+  .math-stat:last-child { border-bottom: none; }
+  .math-stat-num {
+    font-size: clamp(48px, 6vw, 72px);
+    font-weight: 900;
+    color: var(--accent);
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    font-variant-numeric: tabular-nums;
+  }
+  .math-stat-num .unit { font-size: 0.4em; color: var(--ink); font-weight: 700; margin-left: 6px; }
+  .math-stat-label {
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 4px;
+  }
+  .math-stat-h {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin: 8px 0 4px;
+  }
+  .math-stat-p {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--gray-700);
+    margin: 0;
+  }
+
+  /* ---------- DEPLOYMENT GRID ---------- */
+  .deploy { background: var(--off); }
+  .deploy-head { max-width: 760px; margin: 0 auto 56px; text-align: center; }
+  .deploy-head h2 {
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin: 0 0 18px;
+  }
+  .deploy-head p {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--gray-700);
+    margin: 0;
+  }
+  .deploy-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  @media (min-width: 700px) { .deploy-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1080px) { .deploy-grid { grid-template-columns: repeat(4, 1fr); } }
+  .deploy-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .deploy-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(14,14,14,0.08); }
+  .deploy-card-img { aspect-ratio: 4/3; background: var(--cream); overflow: hidden; }
+  .deploy-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .deploy-card-body { padding: 22px 22px 24px; flex: 1; display: flex; flex-direction: column; }
+  .deploy-card-h {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin: 0 0 10px;
+  }
+  .deploy-card-p {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--gray-700);
+    margin: 0;
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq { background: var(--white); }
+  .faq-head { max-width: 760px; margin: 0 auto 48px; text-align: center; }
+  .faq-head h2 {
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin: 0 0 14px;
+  }
+  .faq-head p {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--gray-700);
+    margin: 0;
+  }
+  .faq-list { max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
+  .faq-item {
+    background: var(--off);
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: border-color .2s ease;
+  }
+  .faq-item[open] { border-color: var(--accent); }
+  .faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 20px 24px;
+    font-size: 15.5px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    line-height: 1.35;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: '+';
+    flex-shrink: 0;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--accent);
+    line-height: 1;
+    transition: transform .25s ease;
+  }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-body {
+    padding: 0 24px 22px;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--gray-700);
+  }
+  .faq-body p { margin: 0 0 10px; }
+  .faq-body p:last-child { margin-bottom: 0; }
+</style>
+</head>
+<body>
+
+<div class="gfnav"><div class="gfnav-in"><a class="gfnav-brand" href="/"><img src="/genf-logo.png" alt="Generation Faraday"></a><nav class="gfnav-links"><a href="/products/">Products</a><a href="/how-it-works.html">How It Works</a><a href="/schools.html">Schools</a><a href="/venues.html">Venues</a><a href="/about.html">About</a><a href="/faqs.html">FAQs</a></nav><div class="gfnav-right"><a class="gfnav-phone" href="tel:+18057644346">+1 805 764 4346</a><a class="gfnav-cta" href="/get-in-touch.html">Contact</a></div></div></div>
+
+<header class="page-head"><div class="wrap"><h1>How It Works</h1><p class="lead">The science of blocking the signal, the math of a phone-free day, and the playbook that brings it into a school in 4 to 6 weeks.</p></div></header>
+
+<!-- ========== THE PHYSICS · WHAT GETS BLOCKED ========== -->
+<section class="signals section-pad" id="signals">
   <div class="wrap">
     <div class="signals-head" data-reveal>
       <span class="eyebrow">The Physics · What Gets Blocked</span>
@@ -111,89 +1348,456 @@
       </div>
     </div>
   </div>
-</section><main class="wrap article"><p><strong><strong>HOW IT WORKS</strong></strong></p>
-<h2><strong>The Science Behind Faraday Bags</strong></h2>
-<p>Faraday bags are built on a simple but powerful principle of physics: <em>electromagnetic shielding. </em></p>
-<img src="/pages-img/how-it-works/01.webp"/>
-<figure><img alt="" src="/pages-img/how-it-works/02.png"/></figure>
-<h4><strong><strong>Find the Right Solution</strong></strong></h4>
-Generation Faraday offers a variety of products, including Velcro, magnetic, and locking Faraday bags, as well as other tools to create a phone-free environment. Unlike other bags that may only contain devices without blocking signals, our solutions completely eliminate distractions by blocking Wi-Fi, cellular, Bluetooth, and GPS signals. Generation Faraday is here to help you choose the right solution based on your school’s specific needs—and with built-in RFID integration, administrators gain unmatched visibility and accountability.
-<figure><img alt="" src="/pages-img/how-it-works/03.png"/></figure>
-<h4><strong>Seamless Implementation</strong></h4>
-<strong>Setup &amp; Training:</strong> Understanding that every school has different needs, we offer personalized implementation guidance to ensure the bags are rolled out in a way that works best for you. We also provide onboarding materials for students and parents to ensure a smooth transition.<br/><br/><strong>Ongoing Support:</strong> Our team is always available to provide continuous support, helping you address any challenges and ensuring the system runs seamlessly over time.
-<figure><img alt="" src="/pages-img/how-it-works/04.png"/></figure>
-<h4><strong><strong>Distractions Eliminated, Learning Enhanced</strong></strong></h4>
-With phones securely contained and signals completely blocked, students can focus fully on the lesson at hand. This creates a conducive environment for learning, where attention is directed toward academic engagement, productivity, and mindfulness—ultimately enhancing both individual performance and overall classroom dynamics. Teachers, too, can focus on teaching without having to manage constant distractions, allowing for a more productive and immersive learning experience.
-<h3><strong><strong>Built for Real-World Use</strong></strong></h3>
-While Generation Faraday was created to reduce distractions in schools, its use extends far beyond the classroom. Whether in a yoga studio, concert venue, workplace, or at home, Generation Faraday bags make going signal-free simple, secure, and practical for everyday life. As a division of <a href="https://mosequipment.com/">Mission Darkness</a>, our products are trusted in high-security environments, including by local police and military. If needed, we’d be happy to provide references from local law enforcement that have supported our products.
-<a href="/request-a-quote.html">Contact Us</a>
-<strong>Bringing Generation Faraday bags and the Generation Faraday App into schools is a straightforward, well-supported process designed for easy adoption with minimal disruption.</strong>
-<hr/>
-Unlike other bags, Generation Faraday bags create a fully distraction-free environment by completely blocking signals, ensuring students stay focused. With built-in RFID integration, each bag is tied to a student profile, giving administrators clear visibility, accountability, and efficient management at scale. From planning to full implementation, Generation Faraday is with you every step of the way, providing the guidance and support needed for a seamless transition to a truly signal-free space.
-<h3><strong>Step-by-Step Implementation Guidance</strong></h3>
-<p>We provide clear, actionable instructions to seamlessly integrate Generation Faraday bags and the Generation Faraday app into your school’s daily routine. From initial setup to everyday use, our process is designed to be intuitive and hassle-free.</p>
-<p><a href="/implementation.html"><strong>Learn about implementation</strong></a></p>
-<img alt="" src="/pages-img/how-it-works/05.webp"/>
-<h3><strong>Effortless App Integration</strong></h3>
-<p>During implementation, Generation Faraday bags are seamlessly integrated with the app, allowing for real-time tracking and compliance monitoring at no additional cost. This ensures  teachers and administrators can easily oversee participation and enforce policies effectively. </p>
-<p><strong><a href="/mobile-app.html">Learn more about the app</a></strong></p>
-<h3><strong>Unlocking Solutions, Tailored to Your Setup</strong></h3>
-<p>Schools that purchase Generation Faraday Max Lock bags can select mobile or mounted unlocking solutions.</p>
-<p>These unlockers can be either a handheld key or an <a href="/products/generation-faraday-unlock-dock.html">unlock dock</a>, ensuring teachers and students can efficiently manage device access while maintaining a structured, phone-free environment.</p>
-<h3><strong>Dedicated Hands-On Support</strong></h3>
-<p>We’re with you every step of the way. Our team provides personalized setup assistance, hands-on training for teachers and administrators, and easy-to-follow printable guides for parents and students—ensuring a smooth, stress-free rollout.</p>
-<h3><strong>Ready to go signal-free?</strong></h3>
-<a href="/request-a-quote.html">Contact Us </a>
-<h2><strong><strong><strong>Maximize Instructional Time</strong></strong></strong></h2>
-Implementing Generation Faraday with signal-blocking bags allows teachers to reclaim valuable instructional time that was once lost to managing distractions, collecting phones, and enforcing device policies. Unlike non-signal-blocking bags, which simply store devices, Generation Faraday bags actively prevent phone use, creating a more focused and efficient learning environment.
-<h5>5</h5>
-<p>mins</p>
-<h3><strong><strong>Daily Savings</strong></strong></h3>
-Eliminating phone-related disruptions saves approximately 5 minutes per classroom each day.
-<h5>25</h5>
-<p>mins</p>
-<h3><strong><strong>Weekly Impact</strong></strong></h3>
-Across a school of 30 classrooms, this translates to 25 minutes saved per classroom per week—adding up to 12.5 hours saved weekly across the school.
-<h5>450</h5>
-<p>hours</p>
-<h3><strong><strong>Annual Results</strong></strong></h3>
-Over a year, this amounts to more than 450 hours of recovered instructional time, enabling teachers to focus on what matters most—teaching and learning.
-<figure>
-</figure>
-<figure><img alt="" src="/pages-img/how-it-works/06.png"/></figure>
-<h3><strong><strong>Classroom-by-Classroom Rollout</strong></strong></h3>
-Start small by piloting the program in select classrooms or grade levels. Gather valuable data and feedback to fine-tune the process before expanding school-wide.
-<figure><img alt="" src="/pages-img/how-it-works/07.png"/></figure>
-<h3><strong><strong>District-Level Implementation</strong></strong></h3>
-Collaborate with district administrators to standardize cell phone policies across multiple schools. Centralized app monitoring provides comprehensive insights and ensures alignment across all participating campuses.
-<figure><img alt="" src="/pages-img/how-it-works/08.png"/></figure>
-<h3><strong><strong>School-Wide Deployment</strong></strong></h3>
-Launch Faraday bags in every classroom simultaneously for consistent enforcement and monitoring. With the app’s quick setup, all bags are efficiently linked to student accounts, ensuring a smooth transition.
-<figure><img alt="" src="/pages-img/how-it-works/09.png"/></figure>
-<h3><strong>Specialized Use Cases</strong></h3>
-Target specific environments where distraction-free policies are critical. From testing centers and assemblies to athletic events, Faraday bags enhance focus and reduce interruptions in high-priority settings.
-<figure><img alt="" src="/pages-img/how-it-works/10.png"/></figure>
-Common Questions
-<h2>Questions &amp; Answers</h2>
-<strong><strong>Why choose Faraday bags over other classroom management options?</strong></strong>
-<p>Faraday bags are a simple, cost-effective solution that completely blocks distractions by cutting off all signals so that phones do not vibrate or ding. Unlike other options, they ensure that students retain their devices, solving the question of possession and allowing for access in case of emergency.</p>
-<strong>How do Faraday bags help in classrooms?</strong>
-<p>Faraday bags are a tool for teachers and administrators to maintain a focused learning environment by blocking  the signals to students’ devices. This helps keep attention on classwork, free from the distractions of notifications, texts, and social media.</p>
-<strong><strong>How exactly do Faraday bags block signals?</strong></strong>
-<p>Faraday bags use advanced signal-blocking materials that create a barrier around electronic devices, effectively “silencing” them by preventing wireless signals from coming in or going out</p>
-<strong><strong>Are all types of signals blocked in a Faraday bag?</strong></strong>
-<p>Faraday bags block various signals, including Wi-Fi, Cellular, and Bluetooth. This comprehensive coverage keeps devices offline, helping students avoid digital temptations while in class.</p>
-<strong><strong>Which devices should be placed in Faraday bags?</strong></strong>
-<p>Devices like smartphones, tablets, smartwatches, and small laptops that connect to the internet or use wireless communication are ideal candidates for Generation Faraday bags. Keeping these devices offline helps ensure a distraction-free learning experience.</p>
-<strong><strong>How do Faraday bags make classroom management easier?</strong></strong>
-<p>By keeping devices offline, Generation Faraday bags minimize disruptions and help students stay present. This allows teachers to focus more on teaching and less on managing digital distractions in the classroom.</p>
-<strong><strong>Can Faraday bags be used repeatedly?</strong></strong>
-<p>Absolutely! Our Generation Faraday bags are built for frequent use and can handle daily wear and tear. They’re a long-lasting solution for managing devices in educational settings</p>
-<strong><strong>In an emergency, can students access their phones if they’re in a Faraday bag?</strong></strong>
-<p>Yes, in any emergency, students can quickly remove their phones from the bag, restoring full connectivity. Teachers understand the importance of access in these situations and can assist as needed.</p>
-<strong><strong>What happens in case of an emergency if phones are stored in Faraday bags?</strong></strong>
-<p>Schools have protocols in place for emergencies. Instructors can allow students to retrieve their phones if needed, ensuring that important communication can occur without delay.</p>
-<strong><strong>Can accommodations be made for students with special circumstances who need access to their phones?</strong></strong>
-<p><strong> </strong>Yes, exceptions can be made for students who require phone access due to medical needs or other special situations. Families can coordinate with the school to arrange any necessary accommodations.</p>
-<strong><strong>How do the locking bags work?</strong></strong>
-<p>Faraday Max-Lock requires a specific magnetic key to unlock it. This keeps the phones protected from unauthorized access and allows for staff to to unlock them when required.</p></main><section class="chart-sec"><div class="band-inner"><div class="chartcard"><div class="ct">The math of a phone-free day</div><div class="ch">Instructional hours recovered per year</div><svg viewBox="0 0 600 120" width="100%" role="img" aria-label="Instructional hours recovered per year"><g transform="translate(0,0)"><text x="0" y="20" fill="#6B6B6B" font-family="Poppins" font-size="14" font-weight="600">10 classrooms</text><rect x="150" y="6" width="120" height="22" rx="6" fill="#E04A2C"/><text x="280" y="23" fill="#0E0E0E" font-family="Poppins" font-size="14" font-weight="700">150 hrs</text></g><g transform="translate(0,40)"><text x="0" y="20" fill="#6B6B6B" font-family="Poppins" font-size="14" font-weight="600">20 classrooms</text><rect x="150" y="6" width="240" height="22" rx="6" fill="#E04A2C"/><text x="400" y="23" fill="#0E0E0E" font-family="Poppins" font-size="14" font-weight="700">300 hrs</text></g><g transform="translate(0,80)"><text x="0" y="20" fill="#6B6B6B" font-family="Poppins" font-size="14" font-weight="600">30 classrooms</text><rect x="150" y="6" width="360" height="22" rx="6" fill="#E04A2C"/><text x="520" y="23" fill="#0E0E0E" font-family="Poppins" font-size="14" font-weight="700">450 hrs</text></g></svg><div class="src">Based on ~5 minutes of refocus time saved per class period, per day, across a school year.</div></div></div></section><section class="statband"><div class="band-inner"><span class="eyebrow">Why it works</span><div class="stat"><div class="n">100%</div><div class="l">of cellular, Wi-Fi &amp;amp; Bluetooth signal blocked</div></div><div class="stat"><div class="n"><span class="accent">5 min</span></div><div class="l">of refocus time saved per class, per day</div></div><div class="stat"><div class="n">450+ hrs</div><div class="l">instructional time recovered per year, school-wide</div></div></div></section><section class="ctaband"><div class="band-inner"><span class="eyebrow">Generation Faraday</span><h2>Ready to give students a phone-free day?</h2><p>Generation Faraday partners with schools and districts to design the right rollout — implementation help is included.</p><div class="actions"><a class="btn btn-primary" href="/get-in-touch.html">Request a quote</a><a class="btn btn-ghost" href="/how-it-works.html">See how it works</a></div></div></section><footer class="site"><div class="wrap"><div class="foot-grid"><div><div class="brand brand-invert" style="margin-bottom:20px"><img src="/genf-logo.png" alt="Generation Faraday"></div><p class="foot-tag">A division of Mission Darkness · MOS Equipment, Santa Barbara. The same Faraday shielding trusted by the U.S. Navy and federal forensics teams, applied to the classroom.</p></div><div><h4>Products</h4><ul><li><a href="/products/generation-faraday-max-lock.html">Max Lock</a></li><li><a href="/products/generation-faraday-max-magnetic.html">Max Magnetic</a></li><li><a href="/products/generation-faraday-pro-magnetic.html">Pro Series</a></li><li><a href="/products/generation-faraday-unlock-dock.html">Unlock Dock</a></li><li><a href="/products/">All products</a></li></ul></div><div><h4>For Schools</h4><ul><li><a href="/how-it-works.html">How It Works</a></li><li><a href="/implementation.html">Implementation</a></li><li><a href="/mobile-app.html">The App</a></li><li><a href="/schools.html">Schools</a></li><li><a href="/testimonials.html">Testimonials</a></li></ul></div><div><h4>Company</h4><ul><li><a href="/about.html">About</a></li><li><a href="/faqs.html">FAQs</a></li><li><a href="/careers.html">Careers</a></li><li><a href="/get-in-touch.html">Contact</a></li><li><a href="/privacy-policy.html">Privacy</a></li></ul></div></div></div></footer><script src="/reveal.js" defer></script><script src="/annotate.js" defer></script><script src="/compare.js" defer></script></body></html>
+</section>
+
+<!-- ========== 2,000 CYCLES BREAKTHROUGH ========== -->
+<section class="hiw cycles-hero" id="cycles">
+  <div class="wrap">
+    <div class="cycles-wrap">
+      <div>
+        <div class="cycles-tag">
+          <span class="dot"></span>
+          V1 Launch · June 2026 · Industry First
+        </div>
+        <h2 class="cycles-h">
+          <span class="cycles-num">2,000</span>
+          <span class="cycles-num-label">open / close cycles per bag</span>
+        </h2>
+        <p class="cycles-sub">
+          <span class="hl">No one else has this bag.</span> Every other Faraday pouch on the market fails between <span class="cycles-strike">150 and 200 cycles</span>. We built ours to clear <span class="hl">ten times that</span>. This is a new category of product, not a marginal improvement, and it took years to get here.
+        </p>
+        <div class="cycles-story">
+          <p>
+            We spent years and significant capital on this single number. Every magnetic clasp, every roll-top seam, every fabric weave, every shielding layer was rebuilt from the inside out. We're not selling an existing bag with new marketing. We're shipping <span class="hl">V1 of a category that didn't exist before June 2026.</span>
+          </p>
+          <p>
+            That's why apples-to-apples comparisons with competitors don't hold. A pouch a district re-buys every semester is a fundamentally different product than one a district keeps for <span class="hl">five and a half school years.</span>
+          </p>
+          <p class="cycles-proof-line">
+            <span class="cycles-proof-tag">Tested. For real.</span>
+            Independent bench testing, full methodology, and a complete white paper available on request. If a competitor disputes the number, <strong>ask them for their test results.</strong> We'll happily put ours next to theirs.
+          </p>
+        </div>
+        <div class="gf-cta-row">
+          <a href="/get-in-touch.html" class="gf-btn gf-btn-primary">Request the white paper <span>&rarr;</span></a>
+          <a href="/products/" class="gf-btn gf-btn-ghost">See the bags</a>
+        </div>
+      </div>
+      <div>
+        <div class="cycles-counter">
+          <div class="cycles-counter-num"><span class="cn-current">2,000</span></div>
+          <div class="cycles-counter-label">tested cycles</div>
+          <div class="cycles-counter-bar"><div class="cycles-counter-fill"></div></div>
+          <div class="cycles-counter-key">
+            <div class="cck-row">
+              <div class="cck-name">Generation Faraday</div>
+              <div class="cck-bar"><div class="cck-bar-fill cck-bar-fill-us"></div></div>
+              <div class="cck-val">2,000</div>
+            </div>
+            <div class="cck-row">
+              <div class="cck-name">Fabric containment pouch</div>
+              <div class="cck-bar"><div class="cck-bar-fill cck-bar-fill-them" style="width:10%;"></div></div>
+              <div class="cck-val">~200</div>
+            </div>
+            <div class="cck-row">
+              <div class="cck-name">Generic Faraday bag</div>
+              <div class="cck-bar"><div class="cck-bar-fill cck-bar-fill-them" style="width:7%;"></div></div>
+              <div class="cck-val">~150</div>
+            </div>
+            <div class="cck-row">
+              <div class="cck-name">Hard-shell phone case</div>
+              <div class="cck-bar"><div class="cck-bar-fill cck-bar-fill-them" style="width:9%;"></div></div>
+              <div class="cck-val">~180</div>
+            </div>
+          </div>
+          <div class="cycles-counter-foot">
+            <strong>Tested, documented, and signed.</strong> Methodology and full bench data published in the Generation Faraday Durability White Paper. Available to any district, journalist, or competitor on request.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== THE SCIENCE / FOUR-STEP PROGRESSION ========== -->
+<section class="hiw science section-pad">
+  <div class="wrap">
+    <div class="science-head">
+      <span class="eyebrow">The Science</span>
+      <h2>Built on a 200&#8209;year&#8209;old principle of physics. <span class="accent">Engineered for the daily abuse of a school year.</span></h2>
+      <p>Faraday bags work on the principle of electromagnetic shielding discovered by Michael Faraday in 1836. A conductive enclosure prevents radio-frequency signals from entering or leaving. We took that principle, paired it with the same TitanRF fabric trusted by the U.S. Navy and federal forensics teams, and built a bag that holds up to a full bell schedule for years.</p>
+    </div>
+
+    <div class="science-grid">
+      <article class="science-card">
+        <div class="science-card-img"><img src="/pages-img/how-it-works/01.webp" alt="Signal-blocking bag in a classroom"/></div>
+        <div class="science-card-body">
+          <div class="science-card-num">01 · Find the Right Solution</div>
+          <h3 class="science-card-h">A product line for every policy shape</h3>
+          <p class="science-card-p">Velcro, magnetic, and locking Faraday bags, plus shielded boxes, hampers, and unlock docks. Unlike pouches that only contain the device, ours block Wi-Fi, cellular, Bluetooth, and GPS completely. Every bag carries an RFID tag and serial number, so administrators get visibility and accountability from day one.</p>
+        </div>
+      </article>
+
+      <article class="science-card">
+        <div class="science-card-img"><img src="/pages-img/how-it-works/02.png" alt="Implementation training session"/></div>
+        <div class="science-card-body">
+          <div class="science-card-num">02 · Seamless Implementation</div>
+          <h3 class="science-card-h">Setup, training, and ongoing support</h3>
+          <p class="science-card-p">Every school is different, so we plan the rollout to fit yours. Onboarding materials for staff, students, and families. Live and virtual professional development. Printable guides for parents. Our team stays on call after launch to handle the edge cases, refresh training, and ship replacements as needed.</p>
+        </div>
+      </article>
+
+      <article class="science-card">
+        <div class="science-card-img"><img src="/pages-img/how-it-works/03.png" alt="Students engaged in class without phones"/></div>
+        <div class="science-card-body">
+          <div class="science-card-num">03 · Distractions Eliminated</div>
+          <h3 class="science-card-h">Focus the policy was designed to produce</h3>
+          <p class="science-card-p">With phones contained and signals blocked, classrooms get the quiet they need. Students engage with the lesson instead of the lock screen. Teachers stop policing and start teaching. The behavior that used to take a whole policy quietly disappears because the device can't transmit.</p>
+        </div>
+      </article>
+
+      <article class="science-card">
+        <div class="science-card-img"><img src="/pages-img/how-it-works/04.png" alt="Faraday bags in real-world environments"/></div>
+        <div class="science-card-body">
+          <div class="science-card-num">04 · Built for Real-World Use</div>
+          <h3 class="science-card-h">Beyond the classroom</h3>
+          <p class="science-card-p">Generation Faraday was created for schools, but the technology applies everywhere a signal-free environment matters: testing centers, yoga studios, concert venues, workplaces, and homes. As a division of <a href="https://mosequipment.com/">Mission Darkness</a>, our products are trusted in high-security environments by local police and military. References available on request.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PEDIGREE STRIP ========== -->
+<section class="hiw pedigree">
+  <div class="wrap">
+    <div class="pedigree-grid">
+      <div class="pedigree-photo">
+        <img src="/pages-img/how-it-works/05.webp" alt="TitanRF Faraday bags"/>
+      </div>
+      <div>
+        <div class="pedigree-lineage">
+          <span class="md-label">Mission Darkness</span>
+          <span class="sub">A Division of MOS Equipment · Santa Barbara · Est. 2015</span>
+        </div>
+        <p class="pedigree-text">
+          The same <span class="hl">TitanRF Faraday shielding</span> sold to the U.S. Navy, federal forensics teams, and law enforcement agencies in 85+ countries.
+          <br/><br/>
+          <span class="mute"><strong>Built to last</strong> is not a tagline for us. We make Faraday products. If they don't last, we don't survive. That's why we put a decade into making this one outlast everything else.</span>
+        </p>
+        <div class="pedigree-foot">
+          <span class="years">10+</span>
+          <span class="years-label">Years Proven<br/>in the Field</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== IMPLEMENTATION PHASES ========== -->
+<section class="hiw phases section-pad">
+  <div class="wrap">
+    <div class="phases-head">
+      <div>
+        <span class="eyebrow">Implementation</span>
+        <h2>From purchase order to running program in <span class="accent">4 to 6 weeks.</span></h2>
+      </div>
+      <p>Every Generation Faraday rollout follows the same five-phase playbook. Hands-on guidance is included free with every district purchase. No add-on consulting fees, no separate training contracts. Our team plans the rollout, trains your staff, supports families, and stays on call after launch.</p>
+    </div>
+
+    <div class="phases-list">
+      <div class="phase-card">
+        <div class="phase-num">01</div>
+        <h3 class="phase-h">Information Gathering</h3>
+        <p class="phase-p">Choose between locking and non-locking bags. Set the rollout schedule. Review available resources, funding pathways, and lighthouse-school case studies.</p>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">02</div>
+        <h3 class="phase-h">Planning</h3>
+        <p class="phase-p">Complete a short policy quiz that recommends a rollout shape. Determine Unlock Dock and handheld key counts. Set a replacement policy, typically a $40 fee, to deter tampering.</p>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">03</div>
+        <h3 class="phase-h">Training</h3>
+        <p class="phase-p">Staff, administrators, students, and families are trained through printable guides, live sessions, and virtual PD. Turnkey materials, so school leaders are not writing content from scratch.</p>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">04</div>
+        <h3 class="phase-h">Launch &amp; App Rollout</h3>
+        <p class="phase-p">Unlock Docks installed. Bags assigned by serial and RFID. Student profiles loaded into the app. District, principal, teacher, and student dashboards configured.</p>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">05</div>
+        <h3 class="phase-h">Daily Use &amp; Support</h3>
+        <p class="phase-p">Compliance tracked through the app. Generation Faraday provides ongoing troubleshooting, refresher training, replacements, and post-launch check-ins for as long as the program is in place.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== POLICY SHAPES ========== -->
+<section class="hiw policies section-pad">
+  <div class="wrap">
+    <div class="policies-head">
+      <span class="eyebrow">Three Policy Shapes</span>
+      <h2>Pick the rollout that <span class="accent">fits your school.</span></h2>
+      <p>Most successful programs use one of three policy shapes. We help you pick the one that fits your staff, students, and operations, then tailor it from there.</p>
+    </div>
+
+    <div class="policies-grid">
+      <div class="policy-card recommended">
+        <div class="policy-tag">Recommended</div>
+        <div class="policy-eyebrow">Bell-to-Bell · Assigned</div>
+        <h3 class="policy-h">Student-Assigned Bell-to-Bell</h3>
+        <p class="policy-p">Each student has an assigned bag they carry daily. Bags lock at first bell, unlock at dismissal. Maximizes focus and student accountability across the school day.</p>
+        <div class="policy-meta">
+          <div class="policy-meta-row"><span class="policy-meta-k">Best for</span><span class="policy-meta-v">Most districts</span></div>
+          <div class="policy-meta-row"><span class="policy-meta-k">Storage</span><span class="policy-meta-v">Student carries</span></div>
+        </div>
+      </div>
+
+      <div class="policy-card">
+        <div class="policy-eyebrow">Bell-to-Bell · Centralized</div>
+        <h3 class="policy-h">Centralized Bag Issuance</h3>
+        <p class="policy-p">Students receive a bag upon entering campus and return it at dismissal. Best for large schools that need central control. Requires onsite storage and daily distribution logistics.</p>
+        <div class="policy-meta">
+          <div class="policy-meta-row"><span class="policy-meta-k">Best for</span><span class="policy-meta-v">Large campuses</span></div>
+          <div class="policy-meta-row"><span class="policy-meta-k">Storage</span><span class="policy-meta-v">School-managed</span></div>
+        </div>
+      </div>
+
+      <div class="policy-card">
+        <div class="policy-eyebrow">Instructional Time Only</div>
+        <h3 class="policy-h">Phone-Free Instructional Time</h3>
+        <p class="policy-p">Students lock phones during class, with access allowed during breaks and lunch. An easier transition for staff and students. Not fully phone-free.</p>
+        <div class="policy-meta">
+          <div class="policy-meta-row"><span class="policy-meta-k">Best for</span><span class="policy-meta-v">First-year pilots</span></div>
+          <div class="policy-meta-row"><span class="policy-meta-k">Storage</span><span class="policy-meta-v">Student carries</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MATH OF A PHONE-FREE DAY ========== -->
+<section class="hiw math section-pad">
+  <div class="wrap">
+    <div class="math-head">
+      <div>
+        <span class="eyebrow">The Math · Instructional Time</span>
+        <h2>Reclaim <span class="accent">450+ hours</span> of instruction per year, school-wide.</h2>
+      </div>
+      <p>Even five minutes of refocus time per class adds up fast. Across a 30-classroom school, the policy returns more than a full month of instructional time over the course of a school year. That is real budget on the teaching side, and it is what makes a phone-free program defensible at the board level.</p>
+    </div>
+
+    <div class="math-stats">
+      <div class="math-stat">
+        <div class="math-stat-num">5<span class="unit">min</span></div>
+        <div class="math-stat-label">Daily Savings</div>
+        <h3 class="math-stat-h">Per classroom, per day</h3>
+        <p class="math-stat-p">Roughly five minutes of refocus time saved when teachers stop policing and start teaching.</p>
+      </div>
+      <div class="math-stat">
+        <div class="math-stat-num">25<span class="unit">min</span></div>
+        <div class="math-stat-label">Weekly Impact</div>
+        <h3 class="math-stat-h">25 minutes weekly, per classroom</h3>
+        <p class="math-stat-p">Across a 30-classroom school, that's roughly 12.5 hours of recovered instruction every week.</p>
+      </div>
+      <div class="math-stat">
+        <div class="math-stat-num">450<span class="unit">hrs</span></div>
+        <div class="math-stat-label">Annual Results</div>
+        <h3 class="math-stat-h">Over a full school year</h3>
+        <p class="math-stat-p">More than 450 hours of recovered instructional time, school-wide. The kind of number that gets quoted in board meetings.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== DEPLOYMENT OPTIONS ========== -->
+<section class="hiw deploy section-pad">
+  <div class="wrap">
+    <div class="deploy-head">
+      <span class="eyebrow">Deployment Options</span>
+      <h2>Start where you are, <span class="accent">scale when you're ready.</span></h2>
+      <p>The same Generation Faraday playbook fits a single-classroom pilot and a district-wide rollout. Most schools pick one of these four shapes.</p>
+    </div>
+
+    <div class="deploy-grid">
+      <article class="deploy-card">
+        <div class="deploy-card-img"><img src="/pages-img/how-it-works/06.png" alt="Classroom rollout"/></div>
+        <div class="deploy-card-body">
+          <h3 class="deploy-card-h">Classroom-by-Classroom Rollout</h3>
+          <p class="deploy-card-p">Start small. Pilot the program in select classrooms or grade levels. Gather data and feedback to fine-tune the process before expanding school-wide.</p>
+        </div>
+      </article>
+      <article class="deploy-card">
+        <div class="deploy-card-img"><img src="/pages-img/how-it-works/07.png" alt="District-level implementation"/></div>
+        <div class="deploy-card-body">
+          <h3 class="deploy-card-h">District-Level Implementation</h3>
+          <p class="deploy-card-p">Work with district administrators to standardize cell phone policies across multiple schools. Centralized app monitoring keeps every campus aligned.</p>
+        </div>
+      </article>
+      <article class="deploy-card">
+        <div class="deploy-card-img"><img src="/pages-img/how-it-works/08.png" alt="School-wide deployment"/></div>
+        <div class="deploy-card-body">
+          <h3 class="deploy-card-h">School-Wide Deployment</h3>
+          <p class="deploy-card-p">Launch Faraday bags in every classroom simultaneously for consistent enforcement and monitoring. Bags are linked to student accounts during onboarding.</p>
+        </div>
+      </article>
+      <article class="deploy-card">
+        <div class="deploy-card-img"><img src="/pages-img/how-it-works/09.png" alt="Specialized use cases"/></div>
+        <div class="deploy-card-body">
+          <h3 class="deploy-card-h">Specialized Use Cases</h3>
+          <p class="deploy-card-p">Target the high-stakes environments where signal isolation actually matters: testing centers, assemblies, athletic events, and any setting where distraction is unacceptable.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section class="hiw faq section-pad">
+  <div class="wrap">
+    <div class="faq-head">
+      <span class="eyebrow">Common Questions</span>
+      <h2>Questions <span class="accent">&amp; Answers</span></h2>
+      <p>The questions district administrators, principals, and parents ask most often. Have one we haven't covered? <a href="/get-in-touch.html" style="color:var(--accent);font-weight:700">Get in touch.</a></p>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Why choose Faraday bags over other classroom management options?</summary>
+        <div class="faq-body">
+          <p>Generation Faraday bags are a simple, cost-effective solution that completely block distractions by cutting off all signals. Phones cannot vibrate or ding. Students retain physical possession of their devices, which solves the question of ownership and allows for immediate access in case of emergency. Containment pouches and check-in caddies do not block signal, so the distractions persist.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>How do Faraday bags help in classrooms?</summary>
+        <div class="faq-body">
+          <p>Faraday bags give teachers and administrators a tool to maintain a focused learning environment by blocking the signals to students' devices. Attention stays on classwork, free from the constant pull of notifications, texts, and social media.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>How exactly do Faraday bags block signals?</summary>
+        <div class="faq-body">
+          <p>The interior of every Generation Faraday bag is lined with TitanRF, a conductive fabric that creates a Faraday cage around the device inside. The cage prevents wireless signals from entering or leaving, effectively silencing the phone for as long as the bag stays closed.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Which signals are blocked?</summary>
+        <div class="faq-body">
+          <p>Cellular (including 5G), Wi-Fi, Bluetooth, GPS, external RFID, and NFC. This comprehensive coverage keeps the device offline and unable to pair with smartwatches, earbuds, or location-tracking services while bagged.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Which devices should go in Faraday bags?</summary>
+        <div class="faq-body">
+          <p>Smartphones, tablets, smartwatches, and small laptops that connect to the internet or use wireless communication are ideal candidates. Keeping these devices offline during instruction protects the focused-learning environment without removing the device from the student's possession.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>How do Faraday bags make classroom management easier?</summary>
+        <div class="faq-body">
+          <p>The behavior the policy was designed to produce becomes the default. Devices cannot transmit, so teachers stop policing and start teaching. The day-to-day adjudication that drains teacher energy in off-and-away programs simply does not happen.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Can Faraday bags be used repeatedly?</summary>
+        <div class="faq-body">
+          <p>Yes. Generation Faraday bags are tested to 2,000 open-close cycles, the equivalent of roughly 5.5 school years of daily use. Most competing pouches fail before 200 cycles. The durability white paper is available on request.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>In an emergency, can students access their phones?</summary>
+        <div class="faq-body">
+          <p>Yes. In any emergency, the phone can be removed from the bag in seconds, restoring full connectivity. Schools have protocols for emergency access, and teachers can assist as needed.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Can accommodations be made for students with special circumstances?</summary>
+        <div class="faq-body">
+          <p>Yes. Exceptions can be made for students who require phone access for medical, IEP, or other special circumstances. Families coordinate with the school during onboarding to arrange any accommodations.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>How do the locking bags work?</summary>
+        <div class="faq-body">
+          <p>The Generation Faraday Max Lock uses a full-metal magnetic clasp that can only be released by an <a href="/products/generation-faraday-unlock-dock.html" style="color:var(--accent);font-weight:700">Unlock Dock</a> or handheld key. The mechanism keeps devices secured during instruction and lets staff release the bag quickly at dismissal or in an emergency.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ========== EXISTING STAT + CTA BANDS ========== -->
+<section class="statband">
+  <div class="band-inner">
+    <span class="eyebrow">Why it works</span>
+    <div class="stat"><div class="n">100%</div><div class="l">of cellular, Wi-Fi &amp; Bluetooth signal blocked</div></div>
+    <div class="stat"><div class="n"><span class="accent">5 min</span></div><div class="l">of refocus time saved per class, per day</div></div>
+    <div class="stat"><div class="n">450+ hrs</div><div class="l">instructional time recovered per year, school-wide</div></div>
+  </div>
+</section>
+
+<section class="ctaband">
+  <div class="band-inner">
+    <span class="eyebrow">Generation Faraday</span>
+    <h2>Ready to give students a phone-free day?</h2>
+    <p>Generation Faraday partners with schools and districts to design the right rollout. Implementation help is included free with every district purchase.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="/get-in-touch.html">Request a quote</a>
+      <a class="btn btn-ghost" href="/products/">Browse the product line</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand brand-invert" style="margin-bottom:20px"><img src="/genf-logo.png" alt="Generation Faraday"></div>
+        <p class="foot-tag">A division of Mission Darkness · MOS Equipment, Santa Barbara. The same Faraday shielding trusted by the U.S. Navy and federal forensics teams, applied to the classroom.</p>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <ul>
+          <li><a href="/products/generation-faraday-max-lock.html">Max Lock</a></li>
+          <li><a href="/products/generation-faraday-max-magnetic.html">Max Magnetic</a></li>
+          <li><a href="/products/generation-faraday-pro-magnetic.html">Pro Series</a></li>
+          <li><a href="/products/generation-faraday-unlock-dock.html">Unlock Dock</a></li>
+          <li><a href="/products/">All products</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For Schools</h4>
+        <ul>
+          <li><a href="/how-it-works.html">How It Works</a></li>
+          <li><a href="/implementation.html">Implementation</a></li>
+          <li><a href="/mobile-app.html">The App</a></li>
+          <li><a href="/schools.html">Schools</a></li>
+          <li><a href="/testimonials.html">Testimonials</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/faqs.html">FAQs</a></li>
+          <li><a href="/careers.html">Careers</a></li>
+          <li><a href="/get-in-touch.html">Contact</a></li>
+          <li><a href="/privacy-policy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/reveal.js" defer></script>
+<script src="/annotate.js" defer></script>
+<script src="/compare.js" defer></script>
+<style>
+  /* Fail-safe: if reveal.js is missing, ensure content is visible */
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+</style>
+</body>
+</html>
