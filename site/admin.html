@@ -80,13 +80,17 @@ function render(users,invites){
     tr.innerHTML='<td>'+esc(u.name)+'</td><td>'+esc(u.email)+'</td>'+
       '<td><span class="tag '+(u.role==='admin'?'admin':'')+'">'+u.role+'</span></td><td style="text-align:right"></td>';
     var cell=tr.lastChild;
+    var pb=document.createElement('button');pb.className='btn sm gray';pb.textContent='Reset pw';
+    pb.onclick=function(){ if(confirm('Reset password for '+u.email+'? A new temporary password will be generated for you to share.'))
+      api('reset-password',{id:u.id}).then(function(x){ if(x.d&&x.d.password){ window.prompt('New temporary password for '+u.email+' — copy and share it:', x.d.password); } else { alert((x.d&&x.d.error)||'Failed'); } }); };
+    cell.appendChild(pb);
     if(u.email!=='ryan@mosequipment.com'){
-      var rb=document.createElement('button');rb.className='btn sm gray';rb.textContent=u.role==='admin'?'Make member':'Make admin';
+      var rb=document.createElement('button');rb.className='btn sm gray';rb.textContent=u.role==='admin'?'Make member':'Make admin';rb.style.marginLeft='6px';
       rb.onclick=function(){api('set-role',{id:u.id,role:u.role==='admin'?'member':'admin'}).then(reload)};
       var db=document.createElement('button');db.className='btn sm del';db.textContent='Remove';db.style.marginLeft='6px';
       db.onclick=function(){if(confirm('Remove '+u.email+'?'))api('delete-user',{id:u.id}).then(reload)};
       cell.appendChild(rb);cell.appendChild(db);
-    }else{cell.innerHTML='<span class="note">main admin</span>'}
+    }else{var tag=document.createElement('span');tag.className='note';tag.style.marginLeft='6px';tag.textContent='main admin';cell.appendChild(tag);}
     ut.appendChild(tr);
   });
   var it=document.getElementById('invites');it.innerHTML='';

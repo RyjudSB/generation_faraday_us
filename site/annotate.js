@@ -105,6 +105,7 @@
       + '<button id="gftoggle">📍 Annotate</button>'
       + '<div class="gf-sp"><span class="gf-count" id="gfcount"></span>'
       + '<button id="gflistbtn">Notes</button>' + admin
+      + '<a class="b" href="/account.html">Account</a>'
       + '<span class="gf-me">' + esc(me ? me.name : '') + (me && me.role === 'admin' ? ' <small>admin</small>' : '') + '</span>'
       + '<button id="gfout">Logout</button></div>';
     $('gftoggle').onclick = function () {

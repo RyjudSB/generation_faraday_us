@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Account · Generation Faraday</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/products/products.css"><link rel="stylesheet" href="/nav.css">
+<style>
+.acct{max-width:480px;margin:0 auto;padding:40px clamp(20px,4vw,56px) 90px}
+.card{background:#fff;border:1px solid #E5E3DE;border-radius:16px;padding:26px 28px;box-shadow:0 8px 24px rgba(14,14,14,.06);margin-top:18px}
+.card h2{font-size:1.15rem;font-weight:800;margin-bottom:4px}
+.who{color:#6B6B6B;font-size:.92rem;margin-bottom:18px}
+label{display:block;font:700 11px "Poppins";text-transform:uppercase;letter-spacing:.06em;color:#999;margin:14px 0 6px}
+input{width:100%;border:1px solid #ddd;border-radius:10px;padding:12px;font:15px "Poppins";box-sizing:border-box}
+input:focus{border-color:#E04A2C;outline:none}
+button{width:100%;margin-top:22px;background:#E04A2C;color:#fff;border:0;border-radius:10px;padding:13px;font:700 15px "Poppins";cursor:pointer}
+button:hover{background:#B83A1F}button:disabled{opacity:.6}
+.msg{margin-top:16px;padding:11px 13px;border-radius:9px;font-size:.88rem;display:none}
+.msg.err{background:#fdecec;color:#c0392b}.msg.ok{background:#e8f5e9;color:#2e7d32}
+</style></head>
+<body>
+<div class="gfnav"><div class="gfnav-in">
+<a class="gfnav-brand" href="/"><img src="/genf-logo.png" alt="Generation Faraday"></a>
+<nav class="gfnav-links"><a href="/products/">Products</a><a href="/how-it-works.html">How It Works</a><a href="/schools.html">Schools</a><a href="/venues.html">Venues</a><a href="/about.html">About</a><a href="/faqs.html">FAQs</a></nav>
+<div class="gfnav-right"><a class="gfnav-phone" href="tel:+18057644346">+1 805 764 4346</a><a class="gfnav-cta" href="/get-in-touch.html">Contact</a></div>
+</div></div>
+
+<div class="acct">
+  <header class="hero-head" style="padding:24px 0 0"><div><div class="eyebrow" style="color:#E04A2C;font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.74rem">Account</div>
+  <h1 style="font-size:1.9rem;font-weight:800">Your account</h1></div></header>
+
+  <form class="card" id="f">
+    <h2>Change password</h2>
+    <div class="who" id="who"></div>
+    <label>Current password</label>
+    <input id="current" type="password" autocomplete="current-password" required>
+    <label>New password</label>
+    <input id="pw1" type="password" autocomplete="new-password" placeholder="6+ characters" required>
+    <label>Confirm new password</label>
+    <input id="pw2" type="password" autocomplete="new-password" required>
+    <button id="btn" type="submit">Update password</button>
+    <div class="msg err" id="err"></div>
+    <div class="msg ok" id="ok"></div>
+  </form>
+  <p style="margin-top:18px"><a href="/" style="color:#6B6B6B;font-weight:600">&larr; Back to site</a>
+  &nbsp;·&nbsp; <a href="#" id="logout" style="color:#6B6B6B;font-weight:600">Log out</a></p>
+</div>
+
+<script>
+function api(action,body){return fetch('/api/app?action='+action,{method:body?'POST':'GET',headers:body?{'Content-Type':'application/json'}:{},body:body?JSON.stringify(body):undefined}).then(function(r){return r.json().then(function(d){return{ok:r.ok,d:d}})});}
+api('me').then(function(x){ if(!x.ok||!x.d.user){location.href='/login.html?next=/account.html';return;}
+  document.getElementById('who').textContent=x.d.user.name+' · '+x.d.user.email+(x.d.user.role==='admin'?' · admin':'');});
+var f=document.getElementById('f'),err=document.getElementById('err'),ok=document.getElementById('ok'),btn=document.getElementById('btn');
+f.onsubmit=function(e){e.preventDefault();err.style.display='none';ok.style.display='none';
+  var p1=document.getElementById('pw1').value,p2=document.getElementById('pw2').value;
+  if(p1!==p2){err.textContent='New passwords do not match.';err.style.display='block';return;}
+  btn.disabled=true;btn.textContent='Updating…';
+  api('change-password',{current:document.getElementById('current').value,password:p1}).then(function(x){
+    btn.disabled=false;btn.textContent='Update password';
+    if(x.ok){ok.textContent='Password updated. You can use it next time you sign in.';ok.style.display='block';f.reset();}
+    else{err.textContent=x.d.error||'Could not update password.';err.style.display='block';}
+  });
+};
+document.getElementById('logout').onclick=function(e){e.preventDefault();api('logout',{x:1}).then(function(){location.href='/login.html';});};
+</script>
+</body></html>

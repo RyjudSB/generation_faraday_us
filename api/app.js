@@ -102,6 +102,16 @@ export default async function handler(req, res) {
     if (action === 'logout') { clearCookie(res); return res.json({ ok: true }); }
     if (action === 'me') return res.json({ user: pub(me) });
 
+    if (action === 'change-password') {
+      if (!verifyPw(body.current || '', me.salt, me.passHash)) return res.status(400).json({ error: 'Current password is incorrect' });
+      if ((body.password || '').length < 6) return res.status(400).json({ error: 'New password must be at least 6 characters' });
+      const { salt, hash } = hashPw(body.password);
+      me.salt = salt; me.passHash = hash; me.passwordChanged = new Date().toISOString();
+      await putJSON(U(me.id), me);
+      setCookie(res, makeToken(me.id));
+      return res.json({ ok: true });
+    }
+
     // ----- notes -----
     if (action === 'add-note') {
       if (!body.page || typeof body.x !== 'number' || typeof body.y !== 'number') return res.status(400).json({ error: 'page, x, y required' });
@@ -157,6 +167,17 @@ export default async function handler(req, res) {
       const u = await getJSON(U(body.id)); if (!u) return res.status(404).json({ error: 'not found' });
       if (u.email === MAIN_ADMIN) return res.status(400).json({ error: 'Cannot change the main admin' });
       u.role = body.role === 'admin' ? 'admin' : 'member'; await putJSON(U(u.id), u); return res.json({ ok: true });
+    }
+    if (action === 'reset-password') {
+      const u = await getJSON(U(body.id)); if (!u) return res.status(404).json({ error: 'not found' });
+      // Admin sets a specific password, or we generate a temporary one to share.
+      const temp = (body.password && body.password.length >= 6)
+        ? body.password
+        : 'GenF-' + crypto.randomBytes(4).toString('hex');
+      const { salt, hash } = hashPw(temp);
+      u.salt = salt; u.passHash = hash; u.passwordResetBy = me.email; u.passwordResetAt = new Date().toISOString();
+      await putJSON(U(u.id), u);
+      return res.json({ ok: true, email: u.email, password: temp });
     }
 
     return res.status(400).json({ error: 'unknown action: ' + action });
