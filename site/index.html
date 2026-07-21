@@ -137,20 +137,18 @@
       </div>
       <div class="cycles-right" data-reveal>
         <div style="position:relative">
-          <!-- stage: wide elliptical light pool centred on the contact line, spilling out past the bag -->
-          <div style="position:absolute;left:50%;bottom:78px;transform:translate(-50%,50%);width:128%;height:200px;background:radial-gradient(ellipse at center,rgba(255,255,255,0.42),rgba(255,255,255,0.18) 38%,rgba(255,255,255,0.06) 58%,rgba(255,255,255,0) 74%);filter:blur(20px);pointer-events:none"></div>
-          <!-- warm accent wash under the base, ties it to the brand -->
-          <div style="position:absolute;left:50%;bottom:78px;transform:translate(-50%,45%);width:92%;height:120px;background:radial-gradient(ellipse at center,rgba(224,74,44,0.10),rgba(224,74,44,0.04) 42%,rgba(224,74,44,0) 72%);filter:blur(26px);pointer-events:none"></div>
+          <!-- stage: broad, even light lift under the product (no hotspot, no colour cast) -->
+          <div style="position:absolute;left:50%;bottom:78px;transform:translate(-50%,58%);width:150%;height:260px;background:radial-gradient(ellipse at center,rgba(255,255,255,0.17),rgba(255,255,255,0.08) 38%,rgba(255,255,255,0.025) 60%,rgba(255,255,255,0) 78%);filter:blur(34px);pointer-events:none"></div>
           <!-- the bag (bleeds slightly wider than the column so it reads bigger) -->
           <img src="/resources/homepage-bag-trimmed.png" alt="Generation Faraday signal-blocking bag — front with student-ID window and back with magnetic lock" loading="lazy"
                style="position:relative;display:block;width:114%;max-width:none;margin:0 0 0 -7%;height:auto;filter:drop-shadow(0 26px 40px rgba(0,0,0,0.7))">
           <!-- fading reflection, clipped so it only hints at a surface -->
           <div style="position:relative;height:78px;overflow:hidden;margin-top:-1px">
             <img src="/resources/homepage-bag-trimmed.png" alt="" aria-hidden="true" loading="lazy"
-                 style="display:block;width:114%;max-width:none;margin-left:-7%;height:auto;transform:scaleY(-1);opacity:0.16;-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,1),transparent 72%);mask-image:linear-gradient(to bottom,rgba(0,0,0,1),transparent 72%)">
+                 style="display:block;width:114%;max-width:none;margin-left:-7%;height:auto;transform:scaleY(-1);opacity:0.11;-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,1),transparent 72%);mask-image:linear-gradient(to bottom,rgba(0,0,0,1),transparent 72%)">
           </div>
           <!-- contact shadow right where it meets the surface -->
-          <div style="position:absolute;left:50%;bottom:78px;transform:translate(-50%,50%);width:60%;height:20px;background:radial-gradient(ellipse at center,rgba(0,0,0,0.9),rgba(0,0,0,0.45) 42%,transparent 72%);filter:blur(9px);pointer-events:none"></div>
+          <div style="position:absolute;left:50%;bottom:78px;transform:translate(-50%,50%);width:60%;height:20px;background:radial-gradient(ellipse at center,rgba(0,0,0,0.55),rgba(0,0,0,0.25) 44%,transparent 74%);filter:blur(9px);pointer-events:none"></div>
         </div>
         <p style="text-align:center;color:rgba(255,255,255,0.62);font-size:12.5px;line-height:1.5;margin:14px auto 0;max-width:36ch">The actual bag — engineered to survive 2,000 open/close cycles, about 5.5 school years of daily use.</p>
       </div>
@@ -159,6 +157,12 @@
 </section>
 
 <!-- ========== PEDIGREE STRIP ========== -->
+<div aria-hidden="true" style="background:var(--ink);padding:4px 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 var(--gutter)">
+    <div style="height:2px;background:linear-gradient(90deg,transparent,rgba(224,74,44,0.55),transparent)"></div>
+  </div>
+</div>
+
 <section class="pedigree">
   <div class="pedigree-row">
     <div class="pedigree-photo">
@@ -182,7 +186,7 @@
 </section>
 
 <!-- ========== LIGHTHOUSE TRUST BAR ========== -->
-<section class="trust">
+<section class="trust" style="background:#fff">
   <div class="wrap">
     <div class="trust-label">Trusted by <span class="accent">school districts nationwide</span> for phone-free education</div>
   </div>
@@ -217,11 +221,11 @@
 </section>
 
 <!-- ========== MODULE 2 · MINDSET REFRAME ========== -->
-<section class="section-pad" style="background:var(--off)">
+<section style="background:var(--off);padding:clamp(38px,4.5vw,58px) 0">
   <div class="wrap" style="max-width:980px;text-align:center">
     <span class="eyebrow">See It In Action</span>
     <h2 style="font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-0.025em;line-height:1.1;margin:14px 0 10px;color:var(--ink)">A phone-free classroom, in one&nbsp;watch.</h2>
-    <p style="color:var(--gray-700);font-size:17px;line-height:1.6;max-width:56ch;margin:0 auto 30px">See how Generation Faraday silences the signal and gives teachers their classrooms back.</p>
+    <p style="color:var(--gray-700);font-size:17px;line-height:1.6;max-width:none;margin:0 auto 26px">See how Generation Faraday silences the signal and gives teachers their classrooms back.</p>
     <div style="position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:var(--shadow-lg);background:#000">
       <iframe src="https://videopress.com/embed/iPonvBCv?cover=1&amp;controls=1&amp;autoPlay=0&amp;muted=0&amp;preloadContent=metadata&amp;useAverageColor=1" title="Generation Faraday video" frameborder="0" allowfullscreen allow="fullscreen; picture-in-picture; clipboard-write; encrypted-media" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
     </div>
@@ -250,7 +254,6 @@
       <!-- Scenario 1: phone in backpack -->
       <div class="scene-card">
         <div class="scene-photo">
-          <span class="scene-tag">Where it can slip</span>
           <img src="/resources/backpack-phone.jpg" alt="A phone still lit up and ringing inside a school backpack" loading="lazy">
           <span class="scene-num">01</span>
         </div>
@@ -263,7 +266,6 @@
       <!-- Scenario 2: smartwatch pairing -->
       <div class="scene-card">
         <div class="scene-photo">
-          <span class="scene-tag">Where it can slip</span>
           <img src="/resources/smartwatch.jpg" alt="A paired smartwatch on a student's wrist still receiving notifications" loading="lazy">
           <span class="scene-num">02</span>
         </div>
@@ -276,7 +278,6 @@
       <!-- Scenario 3: teacher policing -->
       <div class="scene-card">
         <div class="scene-photo">
-          <span class="scene-tag">What it asks of staff</span>
           <img src="/resources/teacher-phone.jpg" alt="A teacher collecting a phone from a student during class" loading="lazy">
           <span class="scene-num">03</span>
         </div>
@@ -487,7 +488,7 @@
         </div>
         <div class="body">
           <div class="eco-card-cat">01 · Hardware</div>
-          <h3>Signal-Blocking Bags</h3>
+          <h3>Signal-Blocking Bags &amp; Boxes</h3>
           <p>Faraday-shielded pouches that physically block all wireless signals when closed. Built to survive <strong>2,000 open/close cycles</strong>, ten times the nearest competitor.</p>
           <div class="eco-card-list">
             <div class="eco-card-list-item">2,000 cycles · industry first</div>
