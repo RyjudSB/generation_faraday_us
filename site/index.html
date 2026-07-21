@@ -155,8 +155,21 @@
         </div>
       </div>
       <div class="cycles-right" data-reveal>
-        <img src="/resources/homepage-bag-cutout.png" alt="Generation Faraday signal-blocking bag — front with student-ID window and back with magnetic lock" style="width:100%;height:auto;display:block;filter:drop-shadow(0 22px 45px rgba(0,0,0,0.55))" loading="lazy">
-        <p style="text-align:center;color:rgba(255,255,255,0.6);font-size:12.5px;line-height:1.5;margin:16px auto 0;max-width:36ch">The actual bag — engineered to survive 2,000 open/close cycles, about 5.5 school years of daily use.</p>
+        <div style="position:relative">
+          <!-- soft light pool: gives the product a stage on the dark tile -->
+          <div style="position:absolute;left:50%;bottom:64px;transform:translateX(-50%);width:88%;height:170px;background:radial-gradient(ellipse at center,rgba(255,255,255,0.13),rgba(255,255,255,0.035) 48%,transparent 72%);filter:blur(22px);pointer-events:none"></div>
+          <!-- the bag (bleeds slightly wider than the column so it reads bigger) -->
+          <img src="/resources/homepage-bag-trimmed.png" alt="Generation Faraday signal-blocking bag — front with student-ID window and back with magnetic lock" loading="lazy"
+               style="position:relative;display:block;width:114%;max-width:none;margin:0 0 0 -7%;height:auto;filter:drop-shadow(0 26px 40px rgba(0,0,0,0.7))">
+          <!-- fading reflection, clipped so it only hints at a surface -->
+          <div style="position:relative;height:78px;overflow:hidden;margin-top:-1px">
+            <img src="/resources/homepage-bag-trimmed.png" alt="" aria-hidden="true" loading="lazy"
+                 style="display:block;width:114%;max-width:none;margin-left:-7%;height:auto;transform:scaleY(-1);opacity:0.16;-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,1),transparent 72%);mask-image:linear-gradient(to bottom,rgba(0,0,0,1),transparent 72%)">
+          </div>
+          <!-- contact shadow right where it meets the surface -->
+          <div style="position:absolute;left:50%;bottom:78px;transform:translate(-50%,50%);width:60%;height:20px;background:radial-gradient(ellipse at center,rgba(0,0,0,0.9),rgba(0,0,0,0.45) 42%,transparent 72%);filter:blur(9px);pointer-events:none"></div>
+        </div>
+        <p style="text-align:center;color:rgba(255,255,255,0.62);font-size:12.5px;line-height:1.5;margin:14px auto 0;max-width:36ch">The actual bag — engineered to survive 2,000 open/close cycles, about 5.5 school years of daily use.</p>
       </div>
     </div>
   </div>
