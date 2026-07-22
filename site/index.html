@@ -762,40 +762,6 @@
       .sbx-waves .s2{animation-delay:calc(var(--d) + .32s)}
       @media(prefers-reduced-motion:reduce){.sbx-waves .sig{animation:none;opacity:.9}}
 
-      /* ---- Open/closed demo: the one animated moment on the page ---- */
-      .sbxdemo{max-width:760px;margin:clamp(34px,4.5vw,60px) auto clamp(6px,1vw,14px);text-align:center}
-      .sbxdemo-stage{position:relative;aspect-ratio:1160/900;perspective:1600px}
-      .sbxdemo-card{position:absolute;inset:0;transform-style:preserve-3d;
-        animation:sbx-turn 9s cubic-bezier(.66,0,.34,1) infinite}
-      .sbxdemo-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
-        border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 20px 50px rgba(0,0,0,.14)}
-      .sbxdemo-face img{display:block;width:100%;height:100%;object-fit:cover}
-      .sbxdemo-back{transform:rotateY(180deg)}
-      .sbxdemo-waves{position:absolute;inset:0;width:100%;height:100%;
-        animation:sbx-quiet 9s linear infinite}
-      .sbxdemo-waves .sig{stroke:var(--accent);stroke-width:9;filter:drop-shadow(0 0 7px rgba(224,74,44,.85));stroke-linecap:round;opacity:0;
-        animation:sbx-sig 1.5s ease-out infinite;animation-delay:var(--d)}
-      .sbxdemo-waves .s1{animation-delay:calc(var(--d) + .16s)}
-      .sbxdemo-waves .s2{animation-delay:calc(var(--d) + .32s)}
-      /* one arc travelling outward, not three blinking at once */
-      @keyframes sbx-sig{0%{opacity:0}22%{opacity:.95}62%{opacity:0}100%{opacity:0}}
-      /* waves only exist while the lid is up */
-      @keyframes sbx-quiet{0%,36%{opacity:1}41%,100%{opacity:0}}
-      @keyframes sbx-turn{0%,40%{transform:rotateY(0)}50%,90%{transform:rotateY(180deg)}100%{transform:rotateY(360deg)}}
-      .sbxdemo-cap{position:relative;margin:20px 0 0;min-height:1.6em;font-size:14.5px;color:var(--gray-700)}
-      .sbxdemo-cap span{position:absolute;left:0;right:0;animation:9s linear infinite}
-      .sbxdemo-cap .cap-open{animation-name:sbx-cap-a}
-      .sbxdemo-cap .cap-shut{animation-name:sbx-cap-b}
-      @keyframes sbx-cap-a{0%,38%{opacity:1}44%,100%{opacity:0}}
-      @keyframes sbx-cap-b{0%,44%{opacity:0}52%,92%{opacity:1}98%,100%{opacity:0}}
-      /* Reduced motion: hold the closed, quiet state - the point still lands. */
-      @media(prefers-reduced-motion:reduce){
-        .sbxdemo-card,.sbxdemo-waves,.sbxdemo-waves .sig,.sbxdemo-cap span{animation:none!important}
-        .sbxdemo-card{transform:rotateY(180deg)}
-        .sbxdemo-waves{opacity:0}
-        .sbxdemo-cap .cap-open{opacity:0}.sbxdemo-cap .cap-shut{opacity:1}
-      }
-
       /* Narrow screens: the photo can't hold a text block, so let copy sit below it. */
       @media(max-width:820px){
         .sbx-scrim{background:linear-gradient(to top,rgba(8,8,8,.45) 0%,rgba(8,8,8,0) 38%)}
@@ -836,43 +802,9 @@
       </div>
     </section>
 
-    <!-- Open vs closed, demonstrated rather than asserted. The phones are
-         still transmitting until the lid shuts; then nothing. -->
-    <div class="sbxdemo" data-reveal>
-      <div class="sbxdemo-stage">
-        <div class="sbxdemo-card">
-          <div class="sbxdemo-face sbxdemo-front">
-            <img src="/resources/sbx-open.jpg" width="1160" height="900"
-                 alt="Shielded Box open, phones seated in numbered foam slots" loading="lazy" decoding="async">
-            <svg class="sbxdemo-waves" viewBox="0 0 1160 900" fill="none" aria-hidden="true" focusable="false">
-          <path class="sig s0" style="--d:0s" d="M 303 449 A 34 34 0 0 1 357 449"/>
-          <path class="sig s1" style="--d:0s" d="M 283 433 A 60 60 0 0 1 377 433"/>
-          <path class="sig s2" style="--d:0s" d="M 262 417 A 86 86 0 0 1 398 417"/>
-          <path class="sig s0" style="--d:0.1s" d="M 443 441 A 34 34 0 0 1 497 441"/>
-          <path class="sig s1" style="--d:0.1s" d="M 423 425 A 60 60 0 0 1 517 425"/>
-          <path class="sig s2" style="--d:0.1s" d="M 402 409 A 86 86 0 0 1 538 409"/>
-          <path class="sig s0" style="--d:0.2s" d="M 583 435 A 34 34 0 0 1 637 435"/>
-          <path class="sig s1" style="--d:0.2s" d="M 563 419 A 60 60 0 0 1 657 419"/>
-          <path class="sig s2" style="--d:0.2s" d="M 542 403 A 86 86 0 0 1 678 403"/>
-          <path class="sig s0" style="--d:0.3s" d="M 723 439 A 34 34 0 0 1 777 439"/>
-          <path class="sig s1" style="--d:0.3s" d="M 703 423 A 60 60 0 0 1 797 423"/>
-          <path class="sig s2" style="--d:0.3s" d="M 682 407 A 86 86 0 0 1 818 407"/>
-          <path class="sig s0" style="--d:0.4s" d="M 853 449 A 34 34 0 0 1 907 449"/>
-          <path class="sig s1" style="--d:0.4s" d="M 833 433 A 60 60 0 0 1 927 433"/>
-          <path class="sig s2" style="--d:0.4s" d="M 812 417 A 86 86 0 0 1 948 417"/>
-            </svg>
-          </div>
-          <div class="sbxdemo-face sbxdemo-back">
-            <img src="/resources/sbx-closed.jpg" width="1160" height="900"
-                 alt="The same Shielded Box closed and latched" loading="lazy" decoding="async">
-          </div>
-        </div>
+
       </div>
-      <p class="sbxdemo-cap">
-        <span class="cap-open">Lid up &mdash; every radio in the box is still talking.</span>
-        <span class="cap-shut">Lid down &mdash; nothing gets in or out.</span>
-      </p>
-    </div>
+    </section>
 
 
     <!-- Hero co-flagships: Max Lock + Shielded Box -->
