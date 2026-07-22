@@ -18,6 +18,11 @@
     --accent-soft: #FCEEE9;
 
     --sans: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    /* Display face. Archivo is a grotesque with a real width axis - the
+       expanded widths read like instrument-panel lettering, which is where
+       this product actually comes from (RF test labs, MIL-STD, TitanRF).
+       Poppins stays on body copy. Revert = point --display at --sans. */
+    --display: "Archivo", "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
     --maxw: 1280px;
     --gutter: clamp(20px, 4vw, 56px);
 
@@ -54,7 +59,23 @@
     color: var(--accent);
   }
   .eyebrow.on-dark { color: #F4A88C; }
-  h1, h2, h3, h4 { font-family: var(--sans); }
+  h1, h2, h3, h4 {
+    font-family: var(--display);
+    font-stretch: 100%;
+    letter-spacing: -0.018em;
+    /* Archivo sets wider than Poppins, so the hand-placed <br/>s in these
+       headings can over-wrap. Balancing keeps the ragged edge sane. */
+    text-wrap: balance;
+  }
+  h1 { font-stretch: 108%; }     /* the one place the width axis is pushed */
+  /* Data set in the display face at its widest: big counts, stat numerals,
+     spec values. These are the numbers the whole pitch rests on. */
+  .num-display {
+    font-family: var(--display);
+    font-stretch: 122%;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.03em;
+  }
 
   /* ---------- Promo bar ---------- */
   .promo-bar {
@@ -2740,7 +2761,17 @@
     margin: 20px 0 36px;
     text-shadow: 0 2px 20px rgba(0,0,0,0.4);
   }
+  .proof-quote { font-family: var(--display); font-stretch: 105%; }
   .proof-quote .big { color: var(--accent); }
+  /* No longer a pull-quote, so the decorative opening mark would be a lie. */
+  .proof-quote::before { content: none !important; }
+  .proof-lede {
+    max-width: 46ch;
+    margin: -14px 0 34px;
+    font-size: 16.5px;
+    line-height: 1.62;
+    color: rgba(255,255,255,0.72);
+  }
   .proof-quote::before {
     content: '"';
     display: block;
