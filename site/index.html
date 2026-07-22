@@ -682,10 +682,11 @@
 
     <!-- ===== Special feature · Shielded Box ===== -->
     <style>
-      .sbx{position:relative;overflow:hidden;border-radius:18px;background:#0E0E0E;margin:clamp(30px,4vw,46px) 0 clamp(34px,4vw,50px);box-shadow:0 28px 74px rgba(14,14,14,.26)}
+      .products{overflow-x:clip}
+      .sbx{position:relative;overflow:hidden;background:#0E0E0E;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);margin-top:clamp(34px,4.5vw,56px);margin-bottom:clamp(34px,4.5vw,56px);min-height:clamp(460px,52vw,660px);display:flex;align-items:center}
       .sbx-bg{position:absolute;inset:0;background:url('/resources/shielded-box-bg.jpg') center/cover no-repeat}
       .sbx-veil{position:absolute;inset:0;background:linear-gradient(100deg,rgba(14,14,14,.97) 0%,rgba(14,14,14,.90) 34%,rgba(14,14,14,.60) 58%,rgba(14,14,14,.26) 100%)}
-      .sbx-in{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:40px;align-items:center;padding:clamp(38px,5vw,72px) clamp(24px,4vw,56px)}
+      .sbx-in{position:relative;width:100%;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:44px;align-items:center;padding:clamp(52px,6vw,88px) clamp(20px,4vw,56px)}
       .sbx-copy{max-width:600px}
       .sbx-copy h3{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.022em;line-height:1.1;color:#fff;margin:12px 0 12px}
       .sbx-copy p{color:rgba(255,255,255,.72);font-size:16.5px;line-height:1.6;margin:0}
