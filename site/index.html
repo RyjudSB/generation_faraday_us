@@ -752,6 +752,16 @@
       .sbx-copy p{color:rgba(255,255,255,.80);font-size:clamp(14.5px,1.25vw,17px);line-height:1.6;margin:0 0 22px;text-shadow:0 1px 14px rgba(0,0,0,.6)}
       .sbx-in .eyebrow{color:#F4A88C;text-shadow:0 1px 12px rgba(0,0,0,.6)}
 
+      /* Live signal escaping the open box. Sits above the scrim so the arcs
+         keep their colour, below the copy so text always wins. */
+      .sbx-waves{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+      .sbx-waves .sig{stroke:var(--accent);stroke-width:5;stroke-linecap:round;opacity:0;
+        filter:drop-shadow(0 0 6px rgba(224,74,44,.9));
+        animation:sbx-sig 1.5s ease-out infinite;animation-delay:var(--d)}
+      .sbx-waves .s1{animation-delay:calc(var(--d) + .16s)}
+      .sbx-waves .s2{animation-delay:calc(var(--d) + .32s)}
+      @media(prefers-reduced-motion:reduce){.sbx-waves .sig{animation:none;opacity:.9}}
+
       /* ---- Open/closed demo: the one animated moment on the page ---- */
       .sbxdemo{max-width:760px;margin:clamp(34px,4.5vw,60px) auto clamp(6px,1vw,14px);text-align:center}
       .sbxdemo-stage{position:relative;aspect-ratio:1160/900;perspective:1600px}
@@ -799,6 +809,23 @@
       <img class="sbx-img" src="/resources/shielded-box-classroom.jpg" width="1536" height="1024"
            alt="Generation Faraday Shielded Box open on a teacher&#39;s desk, phones in numbered foam slots, beside a Phone-Free Learning Zone sign" loading="lazy" decoding="async">
       <div class="sbx-scrim" aria-hidden="true"></div>
+      <svg class="sbx-waves" viewBox="0 0 1000 667" fill="none" aria-hidden="true" focusable="false">
+          <path class="sig s0" style="--d:0s" d="M 418 387 A 18 18 0 0 1 446 387"/>
+          <path class="sig s1" style="--d:0s" d="M 408 379 A 31 31 0 0 1 456 379"/>
+          <path class="sig s2" style="--d:0s" d="M 397 371 A 44 44 0 0 1 467 371"/>
+          <path class="sig s0" style="--d:0.1s" d="M 506 381 A 18 18 0 0 1 534 381"/>
+          <path class="sig s1" style="--d:0.1s" d="M 496 373 A 31 31 0 0 1 544 373"/>
+          <path class="sig s2" style="--d:0.1s" d="M 485 365 A 44 44 0 0 1 555 365"/>
+          <path class="sig s0" style="--d:0.2s" d="M 596 401 A 18 18 0 0 1 624 401"/>
+          <path class="sig s1" style="--d:0.2s" d="M 586 393 A 31 31 0 0 1 634 393"/>
+          <path class="sig s2" style="--d:0.2s" d="M 575 385 A 44 44 0 0 1 645 385"/>
+          <path class="sig s0" style="--d:0.3s" d="M 676 411 A 18 18 0 0 1 704 411"/>
+          <path class="sig s1" style="--d:0.3s" d="M 666 403 A 31 31 0 0 1 714 403"/>
+          <path class="sig s2" style="--d:0.3s" d="M 655 395 A 44 44 0 0 1 725 395"/>
+          <path class="sig s0" style="--d:0.4s" d="M 734 433 A 18 18 0 0 1 762 433"/>
+          <path class="sig s1" style="--d:0.4s" d="M 724 425 A 31 31 0 0 1 772 425"/>
+          <path class="sig s2" style="--d:0.4s" d="M 713 417 A 44 44 0 0 1 783 417"/>
+      </svg>
       <div class="sbx-in">
         <div class="sbx-copy">
           <span class="eyebrow">The Shielded Box</span>
