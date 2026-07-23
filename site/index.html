@@ -1299,10 +1299,33 @@
     <!-- Phone tapping RFID hero panel -->
     <div class="rfid-hero-panel" data-reveal>
       <div class="rfid-hero-art">
-        <img src="/img/home/photo-1608286022625-bc07f7a21154-557c74.jpg" alt="Contactless phone tap" loading="lazy" />
-        <div class="badge-overlay" aria-hidden="true">
-          <span class="pulse"></span>
-          <span class="text">Tap <em>·</em> Scan <em>·</em> Sync</span>
+        <div class="scan-scene" aria-hidden="true">
+          <!-- The bag's tag, embedded under the logo -->
+          <div class="scan-tag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round">
+              <path d="M12 2 3 6v5c0 5 3.8 8.4 9 11 5.2-2.6 9-6 9-11V6z"/>
+              <path d="M12 8.5 8.8 10v2.2c0 2 1.4 3.3 3.2 4.3 1.8-1 3.2-2.3 3.2-4.3V10z" opacity=".55"/>
+            </svg>
+            <span>RFID TAG<em>Serial #GF-1042</em></span>
+          </div>
+
+          <!-- Contactless waves travelling from the tag to the phone -->
+          <svg class="scan-waves" viewBox="0 0 60 96" fill="none" aria-hidden="true">
+            <path class="w w0" d="M14 34 A34 34 0 0 1 14 62"/>
+            <path class="w w1" d="M26 28 A44 44 0 0 1 26 68"/>
+            <path class="w w2" d="M38 22 A54 54 0 0 1 38 74"/>
+          </svg>
+
+          <!-- The phone doing the scan -->
+          <div class="scan-phone">
+            <div class="scan-screen">
+              <span class="scan-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+              </span>
+              <b>Bag #1042</b>
+              <small>Unlocked · Logged</small>
+            </div>
+          </div>
         </div>
       </div>
       <div class="rfid-hero-copy">
